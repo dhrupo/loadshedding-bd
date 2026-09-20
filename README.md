@@ -235,10 +235,16 @@ Tests use saved copies of the real pages and PDFs (`tests/fixtures/`), so they n
 
 ## Deploy
 
-Any host that runs a Python web process works: `uvicorn app:app --host 0.0.0.0 --port $PORT`.
-Run a single worker process: the refresh locks are per process.
-Enable the `scrape` Action (Settings → Actions → General → Workflow permissions: read and write)
-so the repo's `data/` stays current for redeploys.
+**Live site (GitHub Pages):** https://dhrupo.github.io/loadshedding-bd/
+
+The `scrape` Action runs every hour (and on every push to `main`): tests, scrapers, commit
+`data/`, then publish `index.html`, `static/` and `data/` to GitHub Pages. The page works as plain
+static files; on Pages the data is as fresh as the last hourly run, and the "checked N seconds
+ago" line is simply absent. One-time setup: Settings → Pages → Source: **GitHub Actions**.
+
+**With the live check (any Python host):** `uvicorn app:app --host 0.0.0.0 --port $PORT`, single
+worker (the refresh locks are per process). The server then re-checks Power Grid Bangladesh
+whenever a visitor arrives and the last check is over 2 minutes old.
 
 ## Credits
 

@@ -3,10 +3,14 @@ name: scrape
 on:
   schedule:
     - cron: "15 * * * *"
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency: scrape
 
@@ -14,6 +18,9 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,3 +49,11 @@ jobs:
           git add data
           git diff --cached --quiet || git commit -m "data: $(date -u +'%Y-%m-%dT%H:%MZ')"
           git push
+      - name: Publish the page with the fresh data
+        run: mkdir _site && cp -r index.html static data _site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - uses: actions/deploy-pages@v4
+        id: deploy
