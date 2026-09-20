@@ -1,5 +1,19 @@
 [
  {
+  "id": "576a9c77-699d-4372-855e-06cd28f2bc2e",
+  "status": "Actual",
+  "msg_type": "Alert",
+  "cancels": [],
+  "event": "Wind",
+  "severity": "Moderate",
+  "effective": "2026-09-20T09:00:00+00:00",
+  "expires": "2026-09-21T09:00:00+00:00",
+  "headline": "Well-marked Low over Eastcentral Bay - 20.09.2026",
+  "headline_bn": "পূর্বমধ্য বঙ্গোপসাগরে সুস্পষ্ট লঘুচাপ - ২০.০৯.২০২৬",
+  "web": "https://cap.bmd.gov.bd/bmd-cap-alerts/maritime-alert-well-marked-low-north-bay-20092026/",
+  "districts": []
+ },
+ {
   "id": "39b75b96-d793-43c7-9119-59fdfba2c5dd",
   "status": "Actual",
   "msg_type": "Alert",
@@ -136,28 +150,6 @@
    "Chittagong",
    "Cox's Bazar",
    "Patuakhali"
-  ]
- },
- {
-  "id": "486b9df6-4d6d-45dd-a36c-6c84da2b6562",
-  "status": "Actual",
-  "msg_type": "Update",
-  "cancels": [
-   "1bf19b38-2495-41c4-a7d6-83640e352414"
-  ],
-  "event": "Landslide",
-  "severity": "Extreme",
-  "effective": "2026-07-22T00:00:00+00:00",
-  "expires": "2026-07-24T00:00:00+00:00",
-  "headline": "Landslide Warning for Cox's Bazar, Chattogram, Bandarban, Rangamati and Khagrachari - 22-24 July 2026",
-  "headline_bn": "",
-  "web": "https://cap.bmd.gov.bd/bmd-cap-alerts/landslide-warning-chattogram-division-21072026/",
-  "districts": [
-   "Bandarban",
-   "Chittagong",
-   "Cox's Bazar",
-   "Khagrachhari",
-   "Rangamati"
   ]
  }
 ]
