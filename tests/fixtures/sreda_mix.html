@@ -1,0 +1,289 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Electricity Generation Mix | National Database of Renewable Energy</title>
+<link href="index_files/css.css" rel="stylesheet" type="text/css" />
+
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 6px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #00CC00;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Fuel Technology', 'Mega Watt'],
+		['Coal', 6273], ['Gas', 12472], ['HFO', 5641], ['HSD', 768], ['Imported', 2696], ['Renewable', 1852.14], ['Captive', 2800],         ]);
+
+        var options = {
+          title: 'Electricity Generation Mix',
+          legend: 'none',
+          pieSliceText: 'label',
+          slices: { 0: {offset: 0, color: '#000000'},
+                    1: {offset: 0, color: '#FF6600'},
+                    2: {offset: 0, color: '#660000'},
+                    3: {offset: 0, color: '#0000FF'},
+					4: {offset: 0.2, color: '#66CCFF'},
+                    5: {offset: 0.4, color: '#00CC00'},
+                    6: {offset: 0.1, color: '#FF9966'},
+          },
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+</script>
+</head>
+
+<body>
+
+<div id="main">
+
+	
+		<div id="top-nav">
+		
+			<b>SREDA | National Database of Renewable Energy</b>
+	
+		</div>
+
+	
+<div id="header">    
+<img src="index_files/header.jpg" alt="" width="1280" />
+<ul>
+       <li><a href="index.php">Home</a></li>
+       <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Report</a>
+            <div class="dropdown-content">
+              <a href="index.php?id=7">Electricity Generation Mix</a>
+              <a href="index.php?id=4">RE Generation Summary Report</a>
+              <a href="index.php?id=23">RE Progress in Line Graph</a>
+              <a href="index.php?id=22">RE Generation Records</a>
+              <a href="index.php?id=8">Technology wise Generation</a>
+              <a href="index.php?id=11">Year wise Generation of Large Projects</a>
+              <a href="index.php?id=12">Year wise Generation of Small Projects</a>
+              <a href="index.php?id=21">Energy Generation and Carbon Savings</a>
+              <a href="https://solar.sreda.gov.bd/nem/nemstatistics.php" target="_blank">Net Metering Summary Records</a>
+              <a href="index.php?id=17">Statistics of Net Metered Rooftop Solar</a>
+              <a href="index.php?id=15">Statistics of Solar Irrigation Pumps</a>
+              <a href="index.php?id=16">Statistics of Solar Parks</a>
+              <a href="index.php?id=18">Statistics of Solar Charging Station</a>
+              <a href="index.php?id=19">Statistics of Solar Powered Telecom BTS</a>
+              <a href="index.php?id=20">Statistics of Solar Drinking Water System</a>
+              
+               
+              <a href="index.php?id=10">Search Project</a>
+            </div>
+       </li>
+       <li class="dropdown">
+          <a href="index.php?id=1" class="dropbtn">RE Large Projects</a>
+            <div class="dropdown-content">
+              <a href="index.php?id=1&i=17"><strong>Solar</strong></a>
+                	<a href="index.php?id=1&i=1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Park</a>
+                    <a href="index.php?id=1&i=3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Net Metering Rooftop Solar</a>
+                	<a href="index.php?id=1&i=21">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Merchant Power Plant (Solar)</a>
+                    <a href="index.php?id=1&i=4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Irrigation</a>
+                    <a href="index.php?id=1&i=5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Minigrid</a>
+                    <a href="index.php?id=1&i=6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Microgrid</a>
+                    <a href="index.php?id=1&i=7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Nanogrid</a>
+                    <a href="index.php?id=1&i=8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Charging Station</a>
+                    <a href="index.php?id=1&i=9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Powered Telecom BTS</a>
+                    <a href="index.php?id=1&i=10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Drinking Water System</a>
+                    <a href="index.php?id=1&i=2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rooftop Solar Except NEM</a>
+              <a href="index.php?id=1&i=11"><strong>Wind</strong></a>
+                    <a href="index.php?id=1&i=18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wind Power Plant (Onshore and Offshore)</a>
+                    <a href="index.php?id=1&i=22">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Merchant Power Plant (Wind)</a>
+                    <a href="index.php?id=1&i=19">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wind Power Plant (Net Metering)</a>
+                    <a href="index.php?id=1&i=20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wind Power Plant (Off-grid)</a>
+              <a href="index.php?id=1&i=12"><strong>Hydro</strong></a>
+              <a href="index.php?id=1&i=13"><strong>Biogas</strong></a>
+              		<a href="index.php?id=1&i=14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Biogas to Electricity</a>
+              <a href="index.php?id=1&i=15"><strong>Biomass</strong></a>
+              		<a href="index.php?id=1&i=16">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Biomass to Electricity</a>
+              		    <a href="index.php?id=1&i=23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Merchant Power Plant (Non-Solar/Wind)</a>
+              <a href="index.php?id=1&i=24"><strong>Battery Energy Storage System (BESS)</strong></a>	    
+              		    <a href="index.php?id=1&i=25">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BESS (Grid Level)</a>
+              		    <a href="index.php?id=1&i=26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BESS (Distribution Utility Level)</a>
+              		    <a href="index.php?id=1&i=27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BESS (RE Project Level)</a>
+              		    <a href="index.php?id=1&i=28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BESS (Consumer Level-except RE Project)</a>
+            </div>
+       </li>
+       <li class="dropdown">
+          <a href="index.php?id=2" class="dropbtn">RE Small Projects</a>
+            <div class="dropdown-content">
+              <a href="index.php?id=2&i=1">Solar Home System</a>
+              <a href="index.php?id=2&i=3">Solar Street Light</a>
+             <a href="index.php?id=2&i=2">Solar Water Heater</a>
+<!--         <a href="index.php?id=2&i=4">Solar Drinking Water System</a>
+              <a href="index.php?id=2&i=5">Solar Powered Telecom BTS</a>-->
+              <a href="index.php?id=2&i=6">Biogas Plant</a>
+            </div>
+       </li>
+       <!--
+       <li class="dropdown">
+          <a href="index.php?id=3" target="_blank" class="dropbtn">RE Large Projects on Map</a>
+            <div class="dropdown-content">
+              <a href="index.php?id=3&i=17" target="_blank"><strong>Solar</strong></a>
+                	<a href="index.php?id=3&i=1" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Park</a>
+                    <a href="index.php?id=3&i=2" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rooftop Solar Except NEM</a>
+                	<a href="index.php?id=3&i=3" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Net Metering Rooftop Solar</a>
+                    <a href="index.php?id=3&i=4" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Irrigation</a>
+                    <a href="index.php?id=3&i=5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Minigrid</a>
+                    <a href="index.php?id=3&i=6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Microgrid</a>
+                    <a href="index.php?id=3&i=7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Nanogrid</a>
+                    <a href="index.php?id=3&i=8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Charging Station</a>
+                    <a href="index.php?id=3&i=9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Powered Telecom BTS</a>
+                    <a href="index.php?id=3&i=10" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Drinking Water System</a>
+              <a href="index.php?id=3&i=11" target="_blank"><strong>Wind</strong></a>
+              <a href="index.php?id=3&i=12" target="_blank"><strong>Hydro</strong></a>
+              <a href="index.php?id=3&i=13" target="_blank"><strong>Biogas</strong></a>
+              		<a href="index.php?id=3&i=14" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Biogas to Electricity</a>
+              <a href="index.php?id=3&i=15" target="_blank"><strong>Biomass</strong></a>
+              		<a href="index.php?id=3&i=16" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Biomass to Electricity</a>
+            </div>
+       </li>
+       <li class="dropdown">
+       <a href="index.php?id=5" target="_blank" class="dropbtn">Sub-district wise</a>
+            <div class="dropdown-content">
+              <a href="index.php?id=5&i=17" target="_blank"><strong>Solar</strong></a>
+                	<a href="index.php?id=5&i=1" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Park</a>
+                    <a href="index.php?id=5&i=2" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rooftop Solar Except NEM</a>
+                	<a href="index.php?id=5&i=3" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Net Metering Rooftop Solar</a>
+                    <a href="index.php?id=5&i=4" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Irrigation</a>
+                    <a href="index.php?id=5&i=5" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Minigrid</a>
+                    <a href="index.php?id=5&i=6" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Microgrid</a>
+                    <a href="index.php?id=5&i=7" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Nanogrid</a>
+                    <a href="index.php?id=5&i=8" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Charging Station</a>
+                    <a href="index.php?id=5&i=9" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Powered Telecom BTS</a>
+                    <a href="index.php?id=5&i=10" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solar Drinking Water System</a>
+              <a href="index.php?id=5&i=11" target="_blank"><strong>Wind</strong></a>
+              <a href="index.php?id=5&i=12" target="_blank"><strong>Hydro</strong></a>
+              <a href="index.php?id=5&i=13" target="_blank"><strong>Biogas</strong></a>
+              		<a href="index.php?id=5&i=14" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Biogas to Electricity</a>
+              <a href="index.php?id=5&i=15" target="_blank"><strong>Biomass</strong></a>
+              		<a href="index.php?id=5&i=16" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Biomass to Electricity</a>
+            </div>
+       </li>
+       -->
+       <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">RE Stakeholder</a>
+            <div class="dropdown-content">
+              <a href="https://solar.sreda.gov.bd/stakeholder/view/">RE Stakeholder List</a>
+              <a href="https://solar.sreda.gov.bd/stakeholder/view/index.php?id=01">Invitation List in English</a>
+              <a href="https://solar.sreda.gov.bd/stakeholder/view/index.php?id=03">Invitation List in Bangla</a>
+              <a href="https://solar.sreda.gov.bd/stakeholder/login/">Stakeholder Management</a>
+            </div>
+       </li>
+       <li><a href="https://solar.sreda.gov.bd">Solar E-desk</a></li>
+       <li><a href="https://nshd.sreda.gov.bd">Help Desk</a></li>
+       
+       <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Net Metering Program</a>
+            <div class="dropdown-content">
+              <a href="https://nemcalc.sreda.gov.bd">Calculator: Initial Assessment of Net Metered Rooftop Solar</a>
+              <a href="https://solar.sreda.gov.bd/nem/nemstatistics.php" target="_blank">Summary Records of Net Metering Program</a>
+              <a href="index.php?id=17">Distribution Utilitywise Summary of Net Metered Rooftop Solar</a>
+              <a href="index.php?id=1&i=3">Full List of Net Metered Rooftop Solar Projects</a>
+              <a href="index.php?id=24&i=3">Financing Statistics of Last-Mile Financial Distributors</a>
+              <a href="index.php?id=25&i=3">Statistics of RESCO/OPEX investors</a>
+              <a href="index.php?id=26&i=3">Statistics of EPC companies</a>
+              <a href="index.php?id=29&i=3">NEM Project Owners: Organization</a>
+              <a href="index.php?id=30&i=3">NEM Project Owners: Individual Person</a>
+              <a href="index.php?id=27&i=3">Districtwise Progress of Net Metered Projects</a>
+              <a href="index.php?id=28&i=3">Classwise Net Metered Projects</a>
+            </div>
+       </li>
+       
+       <li class="dropdown">
+          <a href="https://ndre.sreda.gov.bd/login" class="dropbtn">Log In</a>
+            <div class="dropdown-content">
+              <a href="https://ndre.sreda.gov.bd/login">Login Panel</a>
+              <a href="list_of_agency_users.php">RE Focal Point of Organization</a>
+              <a href="https://ndre.sreda.gov.bd/login/instructions.pdf" target="_blank">Data Entry Instructions</a>
+            </div>
+       </li>
+    </ul>			
+</div>
+
+<div id="main">	
+<h1>Electricity Generation Mix: <font color="#1FB401"><strong>RE 5.7 %</strong></font></h1>
+<table width="100%" border="0">
+<tr>
+  <td width="40%">
+	<table border="1">
+    <tr>
+    	<th>Fuel/Resource</th>
+        <th>Installed Capacity</th>
+        <th>Share</th>
+    </tr>
+    <tr><td>Coal</td><td>6273 MW</td><td>19.3 %</td></tr><tr><td>Gas</td><td>12472 MW</td><td>38.37 %</td></tr><tr><td>HFO</td><td>5641 MW</td><td>17.36 %</td></tr><tr><td>HSD</td><td>768 MW</td><td>2.36 %</td></tr><tr><td>Imported</td><td>2696 MW</td><td>8.29 %</td></tr><tr><td>Renewable</td><td>1852.14 MW</td><td>5.7 %</td></tr><tr><td>Captive</td><td>2800 MW</td><td>8.61 %</td></tr>    <tr>
+    	<th><strong>Total</strong></th>
+        <th colspan="2"><strong>32502 MW</strong></th>
+        </tr>
+    </table>
+</td><td width="60%">
+<div id="piechart" style="width: 768px; height: 427px;"></div>
+</td></tr>
+</table>
+</div>
+		
+<div id="footer">
+<hr />
+Planning and Development by <a href="https://sites.google.com/view/projukti/home" target="_blank"><strong>PRAJUKTI DOT</strong></a><br/> Visit # 25613769, Last Update: 2026-09-17 14:20:32</div>
+	
+
+</div>
+</body>
+</html>

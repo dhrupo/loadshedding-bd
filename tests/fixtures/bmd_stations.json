@@ -1,0 +1,303 @@
+[
+{
+    "code": "41858",
+    "latitude": "25.75000000",
+    "longitude": "88.91666667",
+    "name": "Syedpur",
+    "nameBN": "সৈয়দপুর"
+}, {
+    "code": "41859",
+    "latitude": "25.73333333",
+    "longitude": "89.23333333",
+    "name": "Rangpur",
+    "nameBN": "রংপুর"
+}, {
+    "code": "41863",
+    "latitude": "25.65000000",
+    "longitude": "88.68333333",
+    "name": "Dinajpur",
+    "nameBN": "দিনাজপুর"
+}, {
+    "code": "41883",
+    "latitude": "24.85000000",
+    "longitude": "89.36666667",
+    "name": "Bogura",
+    "nameBN": "বগুড়া"
+}, {
+    "code": "41886",
+    "latitude": "24.71666667",
+    "longitude": "90.43333333",
+    "name": "Mymensingh",
+    "nameBN": "ময়মনসিংহ"
+}, {
+    "code": "41891",
+    "latitude": "24.90000000",
+    "longitude": "91.88333333",
+    "name": "Sylhet",
+    "nameBN": "সিলেট"
+}, {
+    "code": "41895",
+    "latitude": "24.36666667",
+    "longitude": "88.70000000",
+    "name": "Rajshahi",
+    "nameBN": "রাজশাহী"
+}, {
+    "code": "41950",
+    "latitude": "22.75000000",
+    "longitude": "90.36666667",
+    "name": "Barishal",
+    "nameBN": "বরিশাল"
+}, {
+    "code": "41907",
+    "latitude": "24.13333333",
+    "longitude": "89.05000000",
+    "name": "Ishurdi",
+    "nameBN": "ঈশ্বরদী"
+}, {
+    "code": "41923",
+    "latitude": "23.76666667",
+    "longitude": "90.38333333",
+    "name": "Dhaka",
+    "nameBN": "ঢাকা"
+}, {
+    "code": "41936",
+    "latitude": "23.18333333",
+    "longitude": "89.16666667",
+    "name": "Jashore",
+    "nameBN": "যশোর"
+}, {
+    "code": "41943",
+    "latitude": "23.03333333",
+    "longitude": "91.41666667",
+    "name": "Feni",
+    "nameBN": "ফেনী"
+}, {
+    "code": "41978",
+    "latitude": "22.27000000",
+    "longitude": "91.82000000",
+    "name": "Chattogram",
+    "nameBN": "চট্টগ্রাম"
+}, {
+    "code": "41992",
+    "latitude": "21.45000000",
+    "longitude": "91.96666667",
+    "name": "Cox's Bazar",
+    "nameBN": "কক্সবাজার"
+}, {
+    "code": "41909",
+    "latitude": "24.25000000",
+    "longitude": "89.93333333",
+    "name": "Tangail",
+    "nameBN": "টাঙ্গাইল"
+}, {
+    "code": "41939",
+    "latitude": "23.16666667",
+    "longitude": "90.18333333",
+    "name": "Madaripur",
+    "nameBN": "মাদারীপুর"
+}, {
+    "code": "41941",
+    "latitude": "23.26666667",
+    "longitude": "90.70000000",
+    "name": "Chandpur",
+    "nameBN": "চাঁদপুর"
+}, {
+    "code": "41946",
+    "latitude": "22.71666667",
+    "longitude": "89.08333333",
+    "name": "Satkhira",
+    "nameBN": "সাতক্ষীরা"
+}, {
+    "code": "41966",
+    "latitude": "22.53333333",
+    "longitude": "92.20000000",
+    "name": "Rangamati",
+    "nameBN": "রাঙ্গামাটি"
+}, {
+    "code": "41998",
+    "latitude": "20.86666667",
+    "longitude": "92.30000000",
+    "name": "Teknaf",
+    "nameBN": "টেকনাফ"
+}, {
+    "code": "41960",
+    "latitude": "22.33333333",
+    "longitude": "90.33333333",
+    "name": "Patuakhali",
+    "nameBN": "পটুয়াখালী"
+}, {
+    "code": "41958",
+    "latitude": "22.46666667",
+    "longitude": "89.60000000",
+    "name": "Mongla",
+    "nameBN": "মংলা"
+}, {
+    "code": "41933",
+    "latitude": "23.43333333",
+    "longitude": "91.18333333",
+    "name": "Cumilla",
+    "nameBN": "কুমিল্লা"
+}, {
+    "code": "41947",
+    "latitude": "22.78333333",
+    "longitude": "89.53333333",
+    "name": "Khulna",
+    "nameBN": "খুলনা"
+}, {
+    "code": "41915",
+    "latitude": "24.30000000",
+    "longitude": "91.73333333",
+    "name": "Srimangal",
+    "nameBN": "শ্রীমঙ্গল"
+}, {
+    "code": "41926",
+    "latitude": "23.65000000",
+    "longitude": "88.81666667",
+    "name": "Chuadanga",
+    "nameBN": "চুয়াডাঙা"
+}, {
+    "code": "41929",
+    "latitude": "23.60000000",
+    "longitude": "89.85000000",
+    "name": "Faridpur",
+    "nameBN": "ফরিদপুর"
+}, {
+    "code": "41953",
+    "latitude": "22.86666667",
+    "longitude": "91.10000000",
+    "name": "Maijdee Court",
+    "nameBN": "মাইজীকোর্ট"
+}, {
+    "code": "41965",
+    "latitude": "22.58333333",
+    "longitude": "91.70000000",
+    "name": "Sitakunda",
+    "nameBN": "সীতাকুন্ডু"
+}, {
+    "code": "41989",
+    "latitude": "21.81666667",
+    "longitude": "91.85000000",
+    "name": "Kutubdia",
+    "nameBN": "কুতুবদিয়া"
+}, {
+    "code": "41984",
+    "latitude": "21.98333333",
+    "longitude": "90.23333333",
+    "name": "Khepupara",
+    "nameBN": "খেপুপাড়া"
+}, {
+    "code": "41964",
+    "latitude": "22.48333333",
+    "longitude": "91.43333333",
+    "name": "Sandwip",
+    "nameBN": "সন্দ্বীপ"
+}, {
+    "code": "41963",
+    "latitude": "22.43333333",
+    "longitude": "91.10000000",
+    "name": "Hatiya",
+    "nameBN": "হাতিয়া"
+}, {
+    "code": "41951",
+    "latitude": "22.68333333",
+    "longitude": "90.65000000",
+    "name": "Bhola",
+    "nameBN": "ভোলা"
+}, {
+    "code": "41850",
+    "latitude": "26.49189000",
+    "longitude": "88.47134100",
+    "name": "Tetulia",
+    "nameBN": "তেঁতুলিয়া"
+}, {
+    "code": "41851",
+    "latitude": "26.15318000",
+    "longitude": "88.92400000",
+    "name": "Dimla",
+    "nameBN": "ডিমলা"
+}, {
+    "code": "41856",
+    "latitude": "25.79744000",
+    "longitude": "89.54453000",
+    "name": "Rajarhat",
+    "nameBN": "রাজারহাট"
+}, {
+    "code": "41881",
+    "latitude": "24.97020000",
+    "longitude": "88.91601000",
+    "name": "Badalgachhi",
+    "nameBN": "বদলগাছি"
+}, {
+    "code": "41897",
+    "latitude": "24.43538000",
+    "longitude": "89.37338000",
+    "name": "Tarash",
+    "nameBN": "তাড়াশ"
+}, {
+    "code": "41927",
+    "latitude": "23.91944000",
+    "longitude": "89.22889000",
+    "name": "Kumarkhali",
+    "nameBN": "কুমারখালী"
+}, {
+    "code": "41938",
+    "latitude": "23.01550000",
+    "longitude": "89.83500000",
+    "name": "Gopalganj",
+    "nameBN": "গোপালগঞ্জ"
+}, {
+    "code": "41888",
+    "latitude": "24.88719000",
+    "longitude": "90.73292000",
+    "name": "Netrokona",
+    "nameBN": "নেত্রোকোনা"
+}, {
+    "code": "41902",
+    "latitude": "24.32921000",
+    "longitude": "90.93530000",
+    "name": "Nikli",
+    "nameBN": "নিকলি"
+}, {
+    "code": "41944",
+    "latitude": "23.25878000",
+    "longitude": "92.06760000",
+    "name": "Dighinala",
+    "nameBN": "দিঘীনালা"
+}, {
+    "code": "41980",
+    "latitude": "22.19643000",
+    "longitude": "92.21759000",
+    "name": "Bandarban",
+    "nameBN": "বান্দরবন"
+}, {
+    "code": "41955",
+    "latitude": "20.60250000",
+    "longitude": "92.32962000",
+    "name": "Saint Martin",
+    "nameBN": "সেন্ট মার্টিন"
+}, {
+    "code": "41930",
+    "latitude": "23.83974940",
+    "longitude": "89.77968380",
+    "name": "Aricha",
+    "nameBN": "আরিচা"
+}, {
+    "code": "41961",
+    "latitude": "22.67319440",
+    "longitude": "90.91245020",
+    "name": "Ramgati",
+    "nameBN": "রামগতি"
+}, {
+    "code": "41948",
+    "latitude": "22.35541960",
+    "longitude": "89.28231390",
+    "name": "Koyra",
+    "nameBN": "কয়রা"
+}, {
+    "code": "41924",
+    "latitude": "23.91512520",
+    "longitude": "90.71880350",
+    "name": "Narsingdi Sadar",
+    "nameBN": "নরসিংদী সদর"
+}
+]

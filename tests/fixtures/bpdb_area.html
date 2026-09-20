@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<noscript>
+		
+		<img id="noscript" src="https://cms-assets.tutsplus.com/uploads/users/30/posts/25498/preview_image/preview-tag-noscript.png" alt="Your browser does not support JavaScript!">
+		<style>
+			#noscript{
+				width:100%;
+				height:100vh;
+			}
+
+			div { display:none; }
+		</style>
+	</noscript>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="NFLlCSlhuLAGgkGg29ltA7cCIJCtUM4a5gRxTiGI">
+	<link rel="shortcut icon" href="https://misc.bpdb.gov.bd/storage/favicon/favicon_20240609174735.png" type="image/x-icon">
+	<link rel="icon" href="https://misc.bpdb.gov.bd/storage/favicon/favicon_20240609174735.png" type="image/x-icon">
+	<title>BPDB | চাহিদা ও লোডশেডিং</title>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/bootstrap.min.4.0.0.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/milumax.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/magnific-popup.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/style.min.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/skin/skin-1.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/templete.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/switcher.min.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/css/hover.min.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/css/settings.min.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/css/navigation.min.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/plugins/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/plugins/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="https://misc.bpdb.gov.bd/common/css/common.css">
+	<script src="https://misc.bpdb.gov.bd/plugins/jquery/jquery.min.js"></script>
+	<script src="https://misc.bpdb.gov.bd/extra-plugins/notify/notify.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/plugins/sweetalert2/sweetalert2.min.js"></script>
+	<script src="https://misc.bpdb.gov.bd/plugins/jquery-validation/jquery.validate.min.js"></script>
+	<script src="https://misc.bpdb.gov.bd/plugins/jquery-validation/additional-methods.min.js"></script>
+	
+	<style type="text/css">
+		.header-style-4 .social-line li a:hover {
+			color: #1f4197;
+			background: white;
+			border: 1px solid #1f4197;
+		}
+		.header-style-4 .social-line li a {
+			color: white;
+			background: #1f4197;
+			border: 1px solid #e3e3e3;
+			border-width: 0 1px;
+			height: 45px;
+			line-height: 45px;
+			padding: 0 15px;
+			display: inline-block;
+			min-width: 45px;
+			cursor: pointer;
+		}
+		.mobile_social{
+			margin-top: 30px;
+		}
+		.institute_name{
+			color: #fff;
+			margin-top: -15px;
+			font-size: 30px;
+		}
+		.institute_address{
+			margin-top: -30px;
+			font-size: 14px;
+			color: #fff;
+			text-align: center;
+		}
+		@media    only screen and (min-width:320px) and (max-width:768px) {
+			.mobile_social{
+				margin-top: 0px;
+			}
+			.institute_img{
+				width: auto;
+				margin: 0 auto 10px;
+			}
+			.institute_img img{
+				max-width: 100%;
+				height: auto;
+				max-height: 90px;
+			}
+			.mobile_tutorial_img{
+				width: 100%;
+				margin-top: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+			}
+			.mobile_tutorial_img h2{
+				margin: 0;
+				font-size: 20px;
+				line-height: 1.2;
+			}
+			.institute_name{
+				margin-top: 0px;
+				font-size: 20px;
+			}
+			.institute_address{
+				margin-top: 0px;
+			}
+			.mobile_social_div{
+				margin-left: -40px;
+				margin-bottom: 10px;
+			}
+		}
+
+		/*dropdown menu*/
+		.dropdown-menu {
+			padding: 0;
+			margin: 0;
+		}
+
+		.dropdown-item {
+			border: 1px solid #1f4197;
+		}
+	</style>
+</head>
+<body id="bg" class="boxed">
+	<div class="page-wraper">
+		<header class="site-header header-style-4">
+	<div class="bg-white" style="margin-bottom: -4px;margin-top: 1px;">
+		<div class="container-float">
+			<div class="col-md-12 col-lg-12">
+				<div class="row">
+					<div class="col-2 col-xl-2 col-sm-2 col-md-2 institute_img text-center">
+						<img src="https://misc.bpdb.gov.bd/storage/logo/logo_20240609174735.png" style="height: 80px;">
+					</div>
+					<div class="col-8 col-xl-8 col-sm-8 col-md-8 mobile_tutorial_img text-center">
+						<h2 class="milumax text-uppercase">
+							<a target="_blank" href="https://bpdb.gov.bd/" class="milumax">বাংলাদেশ বিদ্যুৎ উন্নয়ন বোর্ড</a>
+						</h2>
+					</div>
+					<div class="col-2 col-xl-2 col-sm-2 col-md-2 mobile_social_div text-center">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sticky-header main-bar-wraper">
+		<div class="main-bar clearfix ">
+			<div class="slide-up">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="header-nav collapse navbar-collapse" id="navbarTogglerDemo03">
+						<ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
+							<li class="nav-item milu1">
+								<a class=" nav-link" href="https://misc.bpdb.gov.bd">হোম</a>
+							</li>
+
+							<li class="nav-item milu2 dmenu">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown">উৎপাদন</a>
+								<ul class="dropdown-menu sm-menu milu2">
+									<li>
+										<a class="dropdown-item" href="https://misc.bpdb.gov.bd/power-generation-unit">পাওয়ার জেনারেশন ইউনিট</a>
+										<a class="dropdown-item" href="https://misc.bpdb.gov.bd/daily-max-generation">সর্বাধিক উৎপাদন</a>
+										<a class="dropdown-item" href="https://misc.bpdb.gov.bd/daily-generation-archive">দৈনিক উৎপাদনের রেকর্ড</a>
+										<a class="dropdown-item" href="https://misc.bpdb.gov.bd/daily-generation">উৎপাদন বিবরণী</a>
+										
+									</li>
+								</ul>
+							</li>
+							<li class="nav-item milu3">
+								<a class="nav-link" href="https://misc.bpdb.gov.bd/area-wise-demand">চাহিদা ও লোডশেডিং</a>
+							</li>
+							<li class="nav-item milu4">
+								<a class="nav-link" href="https://misc.bpdb.gov.bd/tender">দরপত্র</a>
+							</li>
+							<li class="nav-item milu1">
+								<a class="nav-link" href="https://misc.bpdb.gov.bd/office-order">অফিস আদেশ</a>
+							</li>
+							<li class="nav-item milu1">
+								<a class="nav-link" href="https://misc.bpdb.gov.bd/seniority">জ্যেষ্ঠতার তালিকা</a>
+							</li>
+							<li class="nav-item milu2">
+								<a class="nav-link" href="https://misc.bpdb.gov.bd/biddut-barta">বিদ্যুৎ বার্তা</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+		<div class="page-content">
+			<div>
+	<img src="https://misc.bpdb.gov.bd/frontend/images/main-slider/bpdb_image.jpg" width="100%">
+</div>			<div class="section-full  bg-img-fix bg-white choose-us">
+				<div class="content-area">
+					<div class="container">
+						<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="text-center text-white" style="background: #1f4197;"><strong>Area Wise Demand</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12">
+        <div class="card-body">
+            <form action="https://misc.bpdb.gov.bd/area-wise-demand" method="get" enctype="multipart/form-data" autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group col-sm-4">
+                        <label>Date</label>
+                        <input id="date" name="date" type="text" value="13-09-2026" class="form-control form-control-sm singledatepicker" readonly>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <button style="margin-top: 35px; background:#1f4197;" class="btn btn-flat text-white"><i class="fa fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </form>
+                                    <div class="table-responsive">
+                <table id="dataTable" class="table table-sm table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center; width: 5%">Sl</th>
+                            <th>Zone Name</th>
+                            <th class="text-center">Demand (MW)</th>
+                            <th class="text-center">Load shed (MW)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                                <tr>
+                            <td class="text-right">1</td>
+                            <td>Dhaka</td>
+                            <td class="demand_count pr-1 text-right">6266</td>
+                            <td class="load_shed_count pr-1 text-right">242</td>
+                        </tr>
+                                                <tr>
+                            <td class="text-right">2</td>
+                            <td>Chittagong</td>
+                            <td class="demand_count pr-1 text-right">1631</td>
+                            <td class="load_shed_count pr-1 text-right">40</td>
+                        </tr>
+                                                <tr>
+                            <td class="text-right">3</td>
+                            <td>Khulna</td>
+                            <td class="demand_count pr-1 text-right">2075</td>
+                            <td class="load_shed_count pr-1 text-right">239</td>
+                        </tr>
+                                                <tr>
+                            <td class="text-right">4</td>
+                            <td>Rajshahi</td>
+                            <td class="demand_count pr-1 text-right">1650</td>
+                            <td class="load_shed_count pr-1 text-right">0</td>
+                        </tr>
+                                                <tr>
+                            <td class="text-right">5</td>
+                            <td>Comilla</td>
+                            <td class="demand_count pr-1 text-right">1770</td>
+                            <td class="load_shed_count pr-1 text-right">281</td>
+                        </tr>
+                                                <tr>
+                            <td class="text-right">6</td>
+                            <td>Mymensingh</td>
+                            <td class="demand_count pr-1 text-right">1518</td>
+                            <td class="load_shed_count pr-1 text-right">291</td>
+                        </tr>
+                                                <tr>
+                            <td class="text-right">7</td>
+                            <td>Sylhet</td>
+                            <td class="demand_count pr-1 text-right">782</td>
+                            <td class="load_shed_count pr-1 text-right">177</td>
+                        </tr>
+                                                <tr>
+                            <td class="text-right">8</td>
+                            <td>Barisal</td>
+                            <td class="demand_count pr-1 text-right">566</td>
+                            <td class="load_shed_count pr-1 text-right">18</td>
+                        </tr>
+                                                <tr>
+                            <td class="text-right">9</td>
+                            <td>Rangpur</td>
+                            <td class="demand_count pr-1 text-right">1024</td>
+                            <td class="load_shed_count pr-1 text-right">0</td>
+                        </tr>
+                                                <tr>
+                            <td colspan="2" class="text-center">Total</td>
+                            <td class="text-right pr-1 demand_count_sum" style="background: #5884b1;color: white;">0</td>
+                            <td class="text-right pr-1 load_shed_count_sum" style="background: #5884b1;color: white;">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                                </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $('.demand_count').trigger('blur'); 
+    });
+    $(document).on('blur','.demand_count',function(){
+        var sumOfVal = 0;
+        $(this).parents('table').find(".demand_count").each(function(){
+            if($(this).text() !=''){
+                sumOfVal = sumOfVal + parseInt($(this).text(),10);
+            }
+        });
+        $(this).parents('table').find(".demand_count_sum").html(sumOfVal);
+
+        var totalSumOfVal = 0;
+        $(".demand_count").each(function(){
+            if($(this).text() !=''){
+                totalSumOfVal = totalSumOfVal + parseInt($(this).text(),10);
+            }
+        });
+        $(".total_demand_count_sum").html(totalSumOfVal);
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.load_shed_count').trigger('blur'); 
+    });
+    $(document).on('blur','.load_shed_count',function(){
+        var sumOfVal = 0;
+        $(this).parents('table').find(".load_shed_count").each(function(){
+            if($(this).text() !=''){
+                sumOfVal = sumOfVal + parseInt($(this).text(),10);
+            }
+        });
+        $(this).parents('table').find(".load_shed_count_sum").html(sumOfVal);
+
+        var totalSumOfVal = 0;
+        $(".load_shed_count").each(function(){
+            if($(this).text() !=''){
+                totalSumOfVal = totalSumOfVal + parseInt($(this).text(),10);
+            }
+        });
+        $(".total_load_shed_count_sum").html(totalSumOfVal);
+    });
+</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="site-footer" >
+	<div class="footer-artwork" id="footer-artwork">&nbsp;</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<p class="copyright text-left m-t10 m-b0"><a target="_blank" rel="nofollow" href="https://www.nanosoftbd.com/">কারিগরি সহায়তায়ঃ ন্যানোসফট</a></p>
+			</div>
+			<div class="col-md-6">
+				<p class=" text-left m-t10 m-b0 pull-right">
+					কপিরাইট &copy; ২০২৬
+					বাংলাদেশ বিদ্যুৎ উন্নয়ন বোর্ড
+				</p>
+			</div>							
+		</div>
+	</div>	
+</footer>        <style type="text/css">
+    .preload {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(35, 35, 35, 0.8);
+    }
+</style>
+<div class="preload" style="display: none;">
+    <img src="https://misc.bpdb.gov.bd/common/images/lottery.gif">
+</div>		<button class="scroltop fa fa-caret-up" ></button>
+	</div>
+	<div id="loading-ar ea"></div>
+    <script type="text/javascript" src="https://misc.bpdb.gov.bd/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript" src="https://misc.bpdb.gov.bd/frontend/plugins/revolution/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript"  src="https://misc.bpdb.gov.bd/frontend/js/rev.slider.js"></script>
+	<script type="text/javascript"  src="https://misc.bpdb.gov.bd/frontend/js/bootstrap.min.js"></script>
+	<script src="https://misc.bpdb.gov.bd/plugins/select2/js/select2.full.min.js"></script>
+    <script src="https://misc.bpdb.gov.bd/plugins/moment/moment.min.js"></script>
+    <script src="https://misc.bpdb.gov.bd/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="https://misc.bpdb.gov.bd/common/js/common.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.select2').select2();
+		});
+	</script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			'use strict';
+			dz_rev_slider_1();
+		});
+		$(document).ready(function () {
+			$('.navbar-light .dmenu').hover(function () {
+				$(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+			}, function () {
+				$(this).find('.sm-menu').first().stop(true, true).slideUp(105)
+			});
+		});
+	</script>
+</body>
+</html>

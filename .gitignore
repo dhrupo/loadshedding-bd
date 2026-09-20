@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Scraper scratch files, and the large raw boundary files tools/build_places.py downloads
+*.tmp
+*.log
+geo/raw/
+
+# Local notes and tool folders, not part of the project
+PLAN.md
+CLAUDE.local.md
+.claude/
+.ai/
+.playwright-mcp/
+graphify-out/
+node_modules/
+.env
+
+# Saved pages from early exploration that no test uses
+tests/fixtures/bpdb_plants.html
+tests/fixtures/powerdivision.html
+tests/fixtures/sreda_nem.html
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/

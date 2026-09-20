@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="bd">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="rFjt7deuk2OKInXFWozXNi0ao1gbF9xkLAF1HPnG">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://customer.nesco.gov.bd/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://customer.nesco.gov.bd/dist/css/adminlte.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://customer.nesco.gov.bd/plugins/bootstrap_my/my_style.css?20230817">
+    <!-- Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.rawgit.com/sh4hids/bangla-web-fonts/solaimanlipi/stylesheet.css" rel="stylesheet"
+          type="text/css"/>
+    
+    <link rel="icon" href="/consImages/logoNesco.png">
+   
+   <!-- For map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <!-- end map -->
+         <title>কাস্টমার সার্ভিস পোর্টাল</title>
+</head>
+<body style="font-family: SolaimanLipi, Calibri;">
+    <div class="loader">
+        <div class="loader-in">
+            <div class="innerx one"></div>
+            <div class="innerx two"></div>
+            <div class="innerx three"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <a class="navbar-brand" href="https://customer.nesco.gov.bd">
+                    <img src="/consImages/logoNesco.png" height="35px" alt="নেসকো">
+                    <span style="color: #334464; font-weight: bold; ">&nbsp;কাস্টমার সার্ভিস পোর্টাল&nbsp;</span>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <span class="blink_me text-info text-bold" style="font-size: 25px;">হটলাইন&nbsp;<i
+                        class="fa fa-headphones"></i> ১৬৬০৩</span>
+
+            </div>
+        </div>
+    </div>
+    <div id="app" style="display: block;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #334464;">
+            <div class="container">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon text-white"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- Authentication Links -->
+                        
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/"><i class="fa fa-home"></i> হোম</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false" href="#">অনলাইন সার্ভিস সমূহ</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/post/bill">পোষ্ট-পেইড বিল দেখুন</a>
+                                    <a class="dropdown-item" href="/pre/panel">প্রি-পেইড মিটারের রিচার্জ ও ব্যবহার দেখুন</a>
+                                    <hr>
+                                    <a class="dropdown-item"
+                                    href="/uploads/acts_and_policies/citizen_charter.pdf">নাগরিক সনদ</a>
+                                    <a class="dropdown-item" href="https://connection.nesco.gov.bd/"
+                                    target="_blank">নতুন সংযোগের জন্য আবেদন</a>
+                                    
+                                <!--    <a class="dropdown-item" href="https://ekpay.gov.bd/#/payment/electricity-bill"
+                                    target="_blank">বিল পরিশোধ করুন</a>
+                                    <a class="dropdown-item" href="https://ekpay.gov.bd/#/payment/electricity-bill"
+                                    target="_blank">প্রি-পেইড মিটার রিচার্জ করুন</a>
+								-->
+                                    <a class="dropdown-item" href="/bill-payment-media">বিল পরিশোধ এবং মিটার রিচার্জের মাধ্যম সমূহ</a>
+									<!--
+                                    <a class="dropdown-item"
+                                    href="/uploads/prepaid_meter_user_manual.pdf">প্রি-পেইড মিটার ব্যবহার সহায়িকা</a>
+									-->
+                                    <a class="dropdown-item"
+                                    href="https://bill.nesco.gov.bd/MiscFee">বিবিধ বিল</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/service-offices">সার্ভিস অফিস সমূহ</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false" href="#">অভিযোগ ব্যবস্থাপনা</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item"
+                                    href="https://complain.nesco.gov.bd/nesco-citizen-complaint">অনলাইনে অভিযোগ করুন</a>
+                                <!--    <a class="dropdown-item"
+                                    href="https://complain.mpemr.gov.bd/citizen_complain">মন্ত্রণালয়ের অভিযোগ ব্যবস্থাপনা সিস্টেম</a>
+                                -->
+                                    <a class="dropdown-item"
+                                    href="/office-wise-complain">দপ্তর ভিত্তিক অভিযোগ কেন্দ্র</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/acts-and-policies">আইন/নীতিমালা</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/faqs">জিজ্ঞাসা</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/contact-us">যোগাযোগ</a>
+                            </li>
+                        
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        
+                            
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="https://customer.nesco.gov.bd/login">লগইন</a>
+                            </li>
+                                                            <li class="nav-item">
+                                    <a class="nav-link text-white"
+                                    href="https://customer.nesco.gov.bd/register">নিবন্ধন</a>
+                                </li>
+                            
+                                                <div class="sl-nav">
+                            <i class="sl-flag flag-bd"></i>
+                            <ul>
+                                <li class="nav-link text-white">BD
+                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    <div class="triangle"></div>
+                                    <ul>
+                                        <li>
+                                            <a href="/language/bd">
+                                                <i class="sl-flag flag-bd">
+                                                    <div id="bng"></div>
+                                                </i>
+                                                <span class="active">বাংলা</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/language/en">
+                                                <i class="sl-flag flag-en">
+                                                    <div id="usa"></div>
+                                                </i>
+                                                <span>English</span>
+                                            </a>
+                                        </li>
+
+                                        <!--
+                                        <li><a href="language/uz"><i class="sl-flag flag-uz"><div id="uzbek"></div></i> <span>Uz</span></a></li>
+                                        <li><a href="language/ru"><i class="sl-flag flag-ru"><div id="russian"></div></i> <span>Ru</span></a></li>
+                                        -->
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+                <main class="py-3" style="font-family: SolaimanLipi, Calibri;">
+                <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><h4>দপ্তর ভিত্তিক অভিযোগ কেন্দ্র</h4></div>
+
+                <div class="card-body">
+                    <div class="entry-content">
+						<p>নেসকোর দপ্তর/ডিভিশন ভিত্তিক অভিযোগ কেন্দ্রের নম্বরসমূহ এখানে পাওয়া যাবে।</p>
+					</div>
+                    <div class="table-responsive">
+						<table class=" table table-striped table-bordered table-hover col-md-12 col-sm-12 col-xs-12" data-toggle="table" data-resizable="true" data-click-to-select="true">
+							<thead class="bg-info text-white">
+								<tr>
+									<th class="text-center">ক্রমিক নং</th>
+									<th class="text-center">অফিস/ডিভিশনের নাম ও ঠিকানা</th>
+									<th class="text-center">অভিযোগ কেন্দ্র</th>
+								</tr>
+							</thead>
+							<tbody id="myTable">
+								
+									
+
+																												<tr>
+											<td class="text-center">১</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-১, রাজশাহী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩২১-১২৪৫০৯</br>
+												ফোনঃ ০২৫৮৮৮৬৬২৯৩</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-২, রাজশাহী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৩৬-০৯২৮৮৭</br>
+												ফোনঃ ০২৫৮৮৮০৩৪২২</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-৩, রাজশাহী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৯১৪-১৮০৪৮৮</br>
+												ফোনঃ ০২৫৮৮৮৫৩২৬২</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-৪, রাজশাহী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩০৫-১৮৬৮৬১</br>
+												ফোনঃ ০২৫৮৮৮৫৫৯১০</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-৫, রাজশাহী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৯১-৬৫০৮৭৮</br>
+												ফোনঃ ০২৫৮৮৮৬৬৬০৫</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৬</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, বিমানবন্দর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩২১-১২৪৫২২</br>
+												ফোনঃ ০২৫৮৮৮৭৯২১৩</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৭</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, কাশিয়াডাঙ্গা</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩২১-১২৪৫২৩</br>
+												ফোনঃ ০২৫৮৮৮০১৫০৪</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৮</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, তানোর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭১৩-৮৫০৭০৫</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৯</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-১, চাঁপাইনবাবগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৯৭৮-১৫২২৪২</br>
+												ফোনঃ ০২৫৮৮৮৯৩২৪২ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১০</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-২, চাঁপাইনবাবগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ </br>
+												ফোনঃ ০২৫৮৮৮৯৩৪৬৫</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১১</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, শিবগঞ্জ, চাঁপাইনবাবগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭১৩-৮৫০৭০৮</br>
+												ফোনঃ ০২৫৮৮৮৯৫৩৯৬</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১২</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, গোদাগাড়ী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৩৬-৩৭৬০২৩</br>
+												ফোনঃ ০২৪৭৮-৫৬০১১</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১৩</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, গোমস্তাপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭২২-৭০৫০৩৩</br>
+												ফোনঃ ০৭৮২৩-৭৪০৮৮</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১৪</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, নাটোর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৫৭-৬১১৬০২</br>
+												ফোনঃ ০৭৭১-৬৬৪৮৭</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১৫</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-১, পাবনা</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ </br>
+												ফোনঃ ০২৫৮৮-৮৪৫০৩০</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১৬</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-২, পাবনা</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ </br>
+												ফোনঃ ০২৫৮৮৮৪৩৩৫৮</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১৭</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, ঈশ্বরদী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ </br>
+												ফোনঃ ০২৫৮৮-৮৪৬৫১৩</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১৮</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-১, সিরাজগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৯২৫-২৭১৮০৪</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">১৯</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-২, সিরাজগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৯২৫-২৭১৮০৪</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২০</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-১, বগুড়া</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩২১-১২৪৫২৫</br>
+												ফোনঃ ০২৫৮৯৯০৪৩৩৫</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২১</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-২, বগুড়া</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩০৪-৫৯১৩৭৭</br>
+												ফোনঃ ০২৫৮৯৯০৫৩৭৩</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২২</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-৩, বগুড়া</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭০১-৫৩০৫১৫</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২৩</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-৪, বগুড়া</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩২১-১২৪৫২৪</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২৪</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-৫, বগুড়া</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭০৪-১০৯০৫৮</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২৫</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, শিবগঞ্জ, বগুড়া</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭১৩-৮৫০৭১৯</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২৬</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-১, নওগাঁ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ </br>
+												ফোনঃ ০২৫৮৮৮৮২২৪০</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২৭</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-২, নওগাঁ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩২১-১২৪৫২১</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২৮</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, সান্তাহার</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩২৪-২৭৮৪৪৪</br>
+												ফোনঃ ০২৫৮৮৮৩৭৪৩৩</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">২৯</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, দুপচাঁচিয়া</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩২১-১২৪৫২৬</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩০</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, শেরপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৯৯-১৮২৬১৬</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩১</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, জয়পুরহাট</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৮৯-৪৮৯৭৬৫</br>
+												ফোনঃ ০২৫৮৯৯১৫১৬১</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩২</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-১, রংপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩১৪-২১৪১৩৩</br>
+												ফোনঃ ০৫২১-৬৫২১৫</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩৩</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-২, রংপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৮৬-৬৩০৮৬৬</br>
+												ফোনঃ ০৫২১-৬৩০৬৮</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩৪</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-৩ , রংপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭১৪-০৬২৪৯৫</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩৫</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-৪ , রংপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭০৪-১০৯০৪৬</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩৬</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, কুড়িগ্রাম</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৮১-৮৪০৩০৯</br>
+												ফোনঃ ০৫৮১-৬১৫৪৪</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩৭</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-১, গাইবান্ধা</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩১২-৭৯০৫০১</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩৮</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-২, গাইবান্ধা</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩১৪-১৭৪৬৩৮</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৩৯</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, গোবিন্দগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৩২-০২১৬৬৬</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪০</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, পলাশবাড়ী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৪০-০৮৫১৫৫</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪১</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, লালমনিরহাট</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ </br>
+												ফোনঃ ০৫৯১-৬১২৩১</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪২</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, কালীগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭১৬-৩৮০১৩৯</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪৩</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, পাটগ্রাম</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩২৫-৭৩৪৯৯৬</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪৪</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, ডোমার</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৮৩-০০০০১০</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪৫</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, নীলফামারী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৩৫-৪২৫০৮৯</br>
+												ফোনঃ ০৫৫১-৬১২৬৫</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪৬</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, সৈয়দপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭১৭-৫৮৭৪৯০</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪৭</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, হাতীবান্ধা</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৯৪-৮২৮৫৯০</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪৮</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, কিশোরগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩০৯-৪০৯৩২৯</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৪৯</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, জলঢাকা</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৫৫-৫৮৪৯০৬</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫০</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, বুড়িমারী,পাটগ্রাম</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭০৪১০৯০৫৫</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫১</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, সোনারহাট, কালীগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ </br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫২</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, বড়খাতা, হাতীবান্ধা</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭০৪-১০৯০৫২</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫৩</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-১, দিনাজপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩১৪-১৯৩৪৩৯</br>
+												ফোনঃ ০৫৩১-৬৪৯৭৯</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫৪</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ-২, দিনাজপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩১৪-২১২৮৪০</br>
+												ফোনঃ ০৫৩১-৬৪০২৬</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫৫</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, ঠাকুরগাঁও</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৩১২-৮৬১৯৭১</br>
+												ফোনঃ ০৫৬১-৫২৬৪৬</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫৬</td>
+											<td><b>বিক্রয় ও বিতরণ বিভাগ, পঞ্চগড়</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৮৫৭-১২১৭৪৭</br>
+												ফোনঃ ০৫৬৮-৬১৩৩৫</br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫৭</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, ফুলবাড়ী</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭১৭-৪৪২৬৫৫</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫৮</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, তেঁতুলিয়া</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৩৭-৫৭৪৭৫৭</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৫৯</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, সেতাবগঞ্জ</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭২৩-১৭৯৬৩৭</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																													<tr>
+											<td class="text-center">৬০</td>
+											<td><b>বিদ্যুৎ সরবরাহ ইউনিট, পার্বতীপুর</b></td>
+											
+											<td>অভিযোগ কেন্দ্রের নম্বর সমূহঃ </br>
+												মোবাইলঃ ০১৭৯৮-৭২৪৬৯৪</br>
+												ফোনঃ </br>
+												হটলাইনঃ ১৬৬০৩</br>
+												ই-মেইলঃ  complain@nesco.gov.bd</br>
+												পোর্টালঃ  <a href="https://complain.nesco.gov.bd/nesco-citizen-complaint">নেসকো অভিযোগ ব্যবস্থাপনা সিস্টেম </a>
+											</td>
+										</tr>
+																											
+								
+							</tbody>
+						</table>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <div class="row justify-content-center  navbar fixed-bottom bg-white ">
+    <div class="col-md-10" style="text-align: center;">
+        <hr>
+        Copyright &copy; 2026 <a href="https://nesco.gov.bd">NESCO ICT Operation & Automation</a>.
+        All rights reserved. Hotline <i class="fa fa-headphones"></i> <span style="font-weight:bold">16603</span>
+    </div>
+</div>
+    <!-- /. Footer Section -->
+</div>
+
+                        </main>
+    </div>
+</body>
+</html>
+<script src="https://customer.nesco.gov.bd/plugins/jquery/jquery.min.js"></script>
+<script src="https://customer.nesco.gov.bd/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- FontAwsome -->
+<script src="https://customer.nesco.gov.bd/plugins/fontawesome-free/js/all.js"></script>
+<!-- DataTables -->
+<script src="https://customer.nesco.gov.bd/plugins/datatables/jquery.dataTables.js"></script>
+<!-- Select2 -->
+<script src="https://customer.nesco.gov.bd/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="https://customer.nesco.gov.bd/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="https://customer.nesco.gov.bd/plugins/bootstrap_my/myScripts.js?20230817" type="text/javascript"></script>
+<!--script>
+    $(window).on('load', function () {
+        preloader();
+    });
+</script-->
+<script type="text/javascript">
+    $('.btn-refresh-captcha').click(function () {
+        $(".captcha span").html("Regenerating captcha ...");
+        $.ajax({
+            type: 'GET',
+            //url: 'reload-captcha',
+            url: 'https://customer.nesco.gov.bd/reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+
+</script>
+

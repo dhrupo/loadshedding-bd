@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Loadshedding BD</title>
+<meta name="description" content="Is there power in Bangladesh, why not, and what's coming — hourly loadshedding, region map, causes and forecasts from Power Grid Bangladesh, BPDB and Petrobangla reports.">
+<link rel="icon" href="data:,">
+<script>
+  (function () {
+    var theme = null, lang = null;
+    try { theme = localStorage.getItem("theme"); lang = localStorage.getItem("lang"); } catch (e) {}
+    if (theme !== "light" && theme !== "dark") theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.lang = lang === "bn" ? "bn" : "en";
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous">
+<link rel="stylesheet" href="static/app.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous" defer></script>
+<script src="static/i18n.js" defer></script>
+<script src="static/tools.js" defer></script>
+<script src="static/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main" data-t="skip">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <span data-t="title">Loadshedding BD</span>
+    </div>
+    <button class="toggle" id="lang-toggle" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+      <span id="lang-label">বাংলা</span>
+    </button>
+    <button class="toggle" id="theme-toggle" type="button" aria-pressed="false">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      <span class="visually-hidden" id="theme-label">Dark mode</span>
+    </button>
+  </div>
+  <nav class="tabs tabs-top" aria-label="Sections" data-nav></nav>
+</header>
+
+<main id="main" tabindex="-1">
+  <p class="status" id="status" aria-live="polite"></p>
+  <p class="banner" id="stale" role="status" hidden></p>
+
+  <section id="today" role="tabpanel" aria-labelledby="h-today">
+    <h1 id="h-today" tabindex="-1" data-t="nowHeading">Right now</h1>
+    <div id="alerts" role="status"></div>
+    <div class="grid">
+      <div class="card wide hero">
+        <span class="chip" id="now-chip"></span>
+        <p class="headline" id="now-plain"></p>
+        <p class="note" id="now-basis"></p>
+        <details class="more" id="now-numbers"><summary data-t="showNumbers">Show numbers</summary>
+          <p id="now-sentence"></p>
+          <div class="stats" id="now-stats"></div>
+          <p class="note" id="now-renewable"></p>
+        </details>
+        <button class="btn" id="share" type="button"></button>
+        <span class="note" id="share-done" role="status"></span>
+      </div>
+      <div class="card wide">
+        <h2 data-t="hoursHeading">Next 12 hours</h2>
+        <p class="big" id="hours-sentence"></p>
+        <p id="hours-total"></p>
+        <ol class="hours" id="hours-strip"></ol>
+        <p class="note" data-t="hoursKey"></p>
+        <a class="link" href="#forecast" data-t="fullForecast">See the full forecast</a>
+      </div>
+      <div class="card">
+        <h2 data-t="areaHeading">Your area</h2>
+        <p class="big" id="area-result" aria-live="polite"></p>
+        <div class="search" data-search="today"></div>
+        <div id="area-extras"></div>
+      </div>
+      <div class="card">
+        <h2 data-t="whyTodayHeading">Why</h2>
+        <p class="big" id="today-gas"></p>
+        <a class="link" href="#why" data-t="seeWhy">See why</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="map-tab" role="tabpanel" aria-labelledby="h-map" hidden>
+    <h1 id="h-map" tabindex="-1" data-t="mapHeading">Loadshedding by region</h1>
+    <p class="lead" data-t="mapLead"></p>
+    <div class="search" data-search="map"></div>
+    <div class="grid">
+      <div class="card wide" id="place-card" hidden aria-live="polite"></div>
+      <details class="card wide more" id="desco-card" hidden><summary data-t="descoHeading"></summary>
+        <label for="desco-q" data-t="descoLabel"></label>
+        <input id="desco-q" class="field" type="search" autocomplete="off">
+        <ul class="feeders" id="desco-results" aria-live="polite"></ul>
+        <p class="note" id="desco-note"></p>
+      </details>
+      <div class="card">
+        <div id="map" role="region" aria-label="Map of Bangladesh coloured by loadshedding in each BPDB zone"></div>
+        <div class="scale"><span>0%</span><span class="ramp"></span><span id="map-max"></span></div>
+        <p class="note" data-t="mapLegend"></p>
+      </div>
+      <div class="card">
+        <h2 data-t="zoneList">All zones, worst first</h2>
+        <ul class="zones" id="zone-list"></ul>
+        <p class="note" data-t="mapZoneLevel"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" role="tabpanel" aria-labelledby="h-why" hidden>
+    <h1 id="h-why" tabindex="-1" data-t="whyHeading">Why is there loadshedding?</h1>
+    <p class="lead" data-t="whyLead"></p>
+    <div class="grid">
+      <div class="card wide" id="idle-card" hidden>
+        <h2 data-t="idleHeading"></h2>
+        <p class="big" id="idle-sentence"></p>
+        <div class="reasons" id="idle-reasons"></div>
+        <p class="note" id="idle-source"></p>
+      </div>
+      <div class="card" id="imports-card" hidden>
+        <h2 data-t="importsHeading"></h2>
+        <p class="big" id="imports-sentence"></p>
+        <ul class="pairs" id="imports-lines"></ul>
+        <p class="note" id="imports-source"></p>
+      </div>
+      <div class="card">
+        <h2 data-t="gasHeading">Not enough gas</h2>
+        <p class="big" id="gas-sentence"></p>
+        <details class="more" data-chart="gas"><summary data-t="showChart">Show chart</summary>
+          <ul class="legend"><li><i class="line" style="background:var(--demand)"></i><span data-t="series.needed"></span></li><li><i class="line" style="background:var(--supply)"></i><span data-t="series.delivered"></span></li></ul>
+          <div class="plot"><canvas id="c-gas"></canvas></div>
+        </details>
+      </div>
+      <div class="card">
+        <h2 data-t="causesHeading">Power lost at the 9 pm peak</h2>
+        <p class="big" id="causes-sentence"></p>
+        <details class="more" data-chart="causes"><summary data-t="showChart">Show chart</summary>
+          <ul class="legend">
+            <li><i style="background:var(--gas)"></i><span data-t="series.gasLimit"></span></li>
+            <li><i style="background:var(--coal)"></i><span data-t="series.coalLimit"></span></li>
+            <li><i style="background:var(--water)"></i><span data-t="series.water"></span></li>
+            <li><i style="background:var(--maintenance)"></i><span data-t="series.maintenance"></span></li>
+          </ul>
+          <div class="plot"><canvas id="c-causes"></canvas></div>
+        </details>
+      </div>
+      <div class="card">
+        <h2 data-t="capacityHeading">Plants sitting idle</h2>
+        <p class="big" id="capacity-sentence"></p>
+        <details class="more" data-chart="capacity"><summary data-t="showChart">Show chart</summary>
+          <ul class="legend"><li><i style="background:var(--installed)"></i><span data-t="series.installed"></span></li><li><i style="background:var(--supply)"></i><span data-t="series.output"></span></li></ul>
+          <div class="plot"><canvas id="c-capacity"></canvas></div>
+        </details>
+      </div>
+      <div class="card">
+        <h2 id="fuel-prices-h" data-t="costHeading">Cost of power</h2>
+        <p class="big" id="cost-sentence"></p>
+        <details class="more" data-chart="cost"><summary data-t="showChart">Show chart</summary>
+          <div class="plot"><canvas id="c-cost"></canvas></div>
+          <div class="table-wrap" tabindex="0" role="region" aria-labelledby="fuel-prices-h"><table id="fuel-prices"></table></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="outlook" role="tabpanel" aria-labelledby="h-forecast" hidden>
+    <h1 id="h-forecast" tabindex="-1" data-t="forecastHeading">Forecast</h1>
+    <p class="lead" data-t="forecastLead"></p>
+    <div class="card wide" style="margin-bottom:16px">
+      <h2 data-t="nextHeading">Next 24 hours</h2>
+      <p class="big" id="f24-sentence"></p>
+      <p id="f24-total"></p>
+      <p class="note" data-t="next24Lead"></p>
+      <ul class="legend">
+        <li><i class="dash" style="border-color:var(--demand)"></i><span data-t="series.demand"></span></li>
+        <li><i style="background:rgba(var(--demand-rgb),0.2)"></i><span data-t="series.range"></span></li>
+        <li><i class="dash" style="border-color:var(--supply)"></i><span data-t="series.supply"></span></li>
+        <li><i style="background:var(--loadshed)"></i><span data-t="series.loadshed"></span></li>
+      </ul>
+      <div class="plot tall"><canvas id="c-f24"></canvas></div>
+      <h3 data-t="blocksHeading">At a glance</h3>
+      <ul class="blocks" id="f24-blocks"></ul>
+      <p class="note" id="f24-sure"></p>
+    </div>
+    <h2 data-t="outlookHeading">Next 30 days</h2>
+    <p class="lead" data-t="outlookLead"></p>
+    <div class="card wide">
+      <p class="big" id="outlook-sentence"></p>
+      <p class="note" id="outlook-range"></p>
+      <ul class="days" id="outlook-days"></ul>
+      <details class="more" data-chart="month"><summary data-t="showChart">Show chart</summary>
+        <ul class="legend">
+          <li><i class="dash" style="border-color:var(--demand)"></i><span data-t="series.demand"></span></li>
+          <li><i style="background:rgba(var(--demand-rgb),0.2)"></i><span data-t="series.range"></span></li>
+          <li><i class="line" style="background:var(--supply)"></i><span data-t="series.bestSupply"></span></li>
+        </ul>
+        <div class="plot tall"><canvas id="c-month"></canvas></div>
+      </details>
+      <p class="note" id="outlook-sure"></p>
+    </div>
+  </section>
+
+  <section id="data" role="tabpanel" aria-labelledby="h-data" hidden>
+    <h1 id="h-data" tabindex="-1" data-t="dataHeading">All the data</h1>
+    <p class="lead" data-t="dataLead"></p>
+    <div class="grid">
+      <div class="card" id="bill-card">
+        <h2 data-t="billHeading"></h2>
+        <label for="bill-units" data-t="billLabel"></label>
+        <div class="bill-inputs">
+          <input id="bill-units" class="field" type="number" inputmode="numeric" min="0" max="5000" step="1">
+          <input id="bill-slider" type="range" min="0" max="800" step="5">
+        </div>
+        <p class="big" id="bill-result" aria-live="polite"></p>
+        <div class="slabs" id="bill-bar" aria-hidden="true"></div>
+        <ul class="pairs" id="bill-parts"></ul>
+        <p id="bill-next"></p>
+        <p class="note" id="bill-note"></p>
+        <a class="link" href="https://dpdc.gov.bd/pages/static-pages/6922de6f933eb65569e1a9c4" data-t="billSource"></a>
+      </div>
+      <div class="card" id="prices-card">
+        <h2 data-t="pricesHeading"></h2>
+        <p data-t="pricesLead"></p>
+        <ul class="prices" id="prices"></ul>
+        <p class="note"><span data-t="lpgNote"></span> <a href="https://berc.org.bd/pages/notices" data-t="lpgLink"></a></p>
+      </div>
+    </div>
+    <details class="more all-data" id="all-data" data-chart="alldata"><summary data-t="allData"></summary>
+    <div class="grid">
+      <div class="card">
+        <h2 data-t="weekHeading"></h2>
+        <ul class="legend"><li><i class="line" style="background:var(--demand)"></i><span data-t="series.demand"></span></li><li><i class="line" style="background:var(--supply)"></i><span data-t="series.supply"></span></li><li><i style="background:rgba(var(--loadshed-rgb),0.35)"></i><span data-t="series.loadshed"></span></li></ul>
+        <div class="plot"><canvas id="c-week"></canvas></div>
+      </div>
+      <div class="card">
+        <h2 data-t="mixHeading"></h2>
+        <ul class="legend" id="mix-legend"></ul>
+        <div class="plot"><canvas id="c-mix"></canvas></div>
+      </div>
+      <div class="card">
+        <h2 data-t="shareHeading"></h2>
+        <ul class="legend"><li><i class="line" style="background:var(--renewable)"></i><span data-t="series.renewable"></span></li><li><i class="line" style="background:var(--imports)"></i><span data-t="series.imports"></span></li></ul>
+        <div class="plot"><canvas id="c-share"></canvas></div>
+      </div>
+      <div class="card">
+        <h2 data-t="gasTrendHeading"></h2>
+        <ul class="legend"><li><i class="line" style="background:var(--demand)"></i><span data-t="series.needed"></span></li><li><i class="line" style="background:var(--supply)"></i><span data-t="series.delivered"></span></li></ul>
+        <div class="plot"><canvas id="c-gas-data"></canvas></div>
+      </div>
+      <div class="card wide">
+        <h2 data-t="peakHeading"></h2>
+        <div class="plot"><canvas id="c-peak"></canvas></div>
+      </div>
+      <div class="card wide">
+        <h2 data-t="heatHeading"></h2>
+        <div class="heat" id="heat"></div>
+        <p class="note" data-t="heatKey"></p>
+      </div>
+      <div class="card wide">
+        <h2 id="daily-h" data-t="dailyHeading"></h2>
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="daily-h"><table id="daily"></table></div>
+      </div>
+      <div class="card wide">
+        <h2 data-t="accuracy"></h2>
+        <p id="accuracy"></p>
+        <h2 data-t="downloads"></h2>
+        <ul class="downloads">
+          <li><a href="data/demand.csv" download>demand.csv</a></li>
+          <li><a href="data/generation.csv" download>generation.csv</a></li>
+          <li><a href="data/zones.csv" download>zones.csv</a></li>
+          <li><a href="data/bpdb_daily.csv" download>bpdb_daily.csv</a></li>
+          <li><a href="data/gas.csv" download>gas.csv</a></li>
+          <li><a href="data/fuel_prices.csv" download>fuel_prices.csv</a></li>
+          <li><a href="data/capacity.csv" download>capacity.csv</a></li>
+          <li><a href="data/forecast.json" download>forecast.json</a></li>
+          <li><a href="data/plants.csv" download>plants.csv</a></li>
+          <li><a href="data/tariff.csv" download>tariff.csv</a></li>
+          <li><a href="data/bmd_forecast.csv" download>bmd_forecast.csv</a></li>
+          <li><a href="data/alerts.json" download>alerts.json</a></li>
+          <li><a href="data/desco_schedule.json" download>desco_schedule.json</a></li>
+          <li><a href="data/nesco_notices.csv" download>nesco_notices.csv</a></li>
+        </ul>
+        <h2 style="margin-top:16px" data-t="sources"></h2>
+        <ul class="note">
+          <li><a href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn">Power Grid Bangladesh</a> — hourly demand, supply, loadshed, generation by fuel</li>
+          <li><a href="https://misc.bpdb.gov.bd/area-wise-demand">BPDB</a> — zone demand and loadshed, daily generation report (shortfall causes, fuel cost, official forecast)</li>
+          <li><a href="https://petrobangla.org.bd/pages/reports">Petrobangla</a> — daily gas report · <a href="https://bpc.gov.bd/">BPC</a> — fuel prices · <a href="https://www.renewableenergy.gov.bd/">SREDA</a> — installed capacity</li>
+          <li><a href="https://bmd.gov.bd/">Bangladesh Meteorological Department</a> — station forecasts and weather warnings · <a href="https://dpdc.gov.bd/pages/static-pages/6922de6f933eb65569e1a9c4">DPDC</a> — retail tariff (BERC order) · <a href="https://powerdivision.gov.bd/">Power Division</a> — hotline numbers · <a href="https://desco.gov.bd/">DESCO</a> — feeder schedule · <a href="https://nesco.gov.bd/">NESCO</a> — planned shutdown notices</li>
+          <li><a href="https://open-meteo.com/">Open-Meteo</a> — weather (not a government source) · <a href="https://www.geoboundaries.org/">geoBoundaries</a> (CC BY 3.0 IGO) and <a href="https://github.com/nuhil/bangladesh-geocode">bangladesh-geocode</a> (MIT) — maps and place names; unions, pourashavas and city wards from the Bangladesh Bureau of Statistics 2020 boundaries; neighbourhoods and towns © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL)</li>
+        </ul>
+      </div>
+    </div>
+    </details>
+  </section>
+</main>
+
+<nav class="tabs tabs-bottom" aria-label="Sections" data-nav></nav>
+<div id="tip" role="tooltip"></div>
+</body>
+</html>

@@ -1,0 +1,760 @@
+<style>
+    .custom-highlight {
+        font-weight: bold;
+        font-color: red;
+        padding: 0 4px; /* Adds breathing room around the text */
+        border-radius: 3px; /* Softens the corners */
+    }
+
+    .generation-table {
+        width: 100%;
+        min-width: 760px;
+        border-collapse: collapse;
+        table-layout: auto;
+    }
+
+    .generation-table th{
+        border: 1px solid #d9dee4 !important;
+        vertical-align: middle;
+        font-weight: 600;
+        font-size: medium;
+        text-align: center;
+    }
+    .generation-table td {
+        border: 1px solid #d9dee4 !important;
+        vertical-align: middle;
+        font-family: SolaimanLipi;
+    }
+
+    .generation-table thead th {
+        background-color: #f6f8fa;
+        font-weight: bold;
+        font-size: large;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .generation-table tbody td {
+        text-align: center;
+    }
+
+    .generation-table tbody tr:hover {
+        background-color: #f8fafc;
+    }
+
+    .generation-table .numeric {
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .generation-table .loadshed {
+        font-weight: 600;
+    }
+
+    .generation-table .remark {
+        text-align: left;
+        min-width: 150px;
+    }
+
+    /* Control the width of the first five columns */
+    .generation-table th:nth-child(1),
+    .generation-table td:nth-child(1) {
+        min-width: 90px;
+    }
+
+    .generation-table th:nth-child(2),
+    .generation-table td:nth-child(2) {
+        min-width: 65px;
+    }
+
+    .generation-table th:nth-child(3),
+    .generation-table td:nth-child(3) {
+        min-width: 115px;
+    }
+
+    .generation-table th:nth-child(4),
+    .generation-table td:nth-child(4) {
+        min-width: 105px;
+    }
+
+    .generation-table th:nth-child(5),
+    .generation-table td:nth-child(5) {
+        min-width: 90px;
+    }
+
+    .generation-table th:nth-child(6),
+    .generation-table td:nth-child(6) {
+        min-width: 150px;
+    }
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+    .time-mobile {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .time-desktop {
+            display: none;
+        }
+        .time-mobile {
+            display: inline;
+        }
+
+        .generation-table {
+            min-width: 615px;
+            font-size: 12px;
+        }
+
+        .generation-table th,
+        .generation-table td {
+            padding: 6px 6px;
+        }
+
+        /* Date */
+        .generation-table th:nth-child(1),
+        .generation-table td:nth-child(1) {
+            min-width: 80px;
+        }
+
+        /* Time */
+        .generation-table th:nth-child(2),
+        .generation-table td:nth-child(2) {
+            min-width: 58px;
+        }
+
+        /* Demand */
+        .generation-table th:nth-child(3),
+        .generation-table td:nth-child(3) {
+            min-width: 100px;
+        }
+
+        /* Generation / Supply */
+        .generation-table th:nth-child(4),
+        .generation-table td:nth-child(4) {
+            min-width: 95px;
+        }
+
+        /* Loadshed */
+        .generation-table th:nth-child(5),
+        .generation-table td:nth-child(5) {
+            min-width: 85px;
+        }
+
+        /* Remarks */
+        .generation-table th:nth-child(6),
+        .generation-table td:nth-child(6) {
+            min-width: 150px;
+        }
+    }
+
+    .search-wrapper {
+        max-width: 350px;
+    }
+
+    .data-switch-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 8px;
+
+        background: linear-gradient(135deg, #eef5ff, #dceaff);
+        border: 1px solid #b8d2f0;
+
+        color: #145da0;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+
+        box-shadow: 0 2px 5px rgba(30, 80, 130, 0.08);
+        transition: all 0.2s ease;
+    }
+
+    .data-switch-link:hover {
+        background: linear-gradient(135deg, #dceaff, #c8ddf5);
+        border-color: #8fb9e0;
+        color: #0b4778;
+
+        box-shadow: 0 4px 10px rgba(30, 80, 130, 0.15);
+        transform: translateY(-1px);
+    }
+
+    .data-switch-link svg {
+        transition: transform 0.2s ease;
+    }
+
+    .data-switch-link:hover svg {
+        transform: translate(2px, -2px);
+    }
+</style>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+
+<meta name="msapplication-TileColor" content=""/>
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="HandheldFriendly" content="True"/>
+<meta name="MobileOptimized" content="320"/>
+
+<!-- PWA  -->
+<meta name="theme-color" content="#6777ef"/>
+<link rel="apple-touch-icon" href="https://erp.powergrid.gov.bd/images/logo_r.png">
+
+
+
+    <!--<link rel="manifest" href="https://erp.powergrid.gov.bd/manifests/transgrid.json"> -->
+
+
+
+
+
+
+    <title>Power Grid Bangladesh PLC</title>
+    <link rel="icon" href="https://erp.powergrid.gov.bd/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="https://erp.powergrid.gov.bd/favicon.ico" type="image/x-icon"/>
+
+<link href="https://erp.powergrid.gov.bd/dist/css/tabler.min.css" rel="stylesheet"/>
+<link href="https://erp.powergrid.gov.bd/dist/css/tabler-flags.min.css" rel="stylesheet"/>
+<link href="https://erp.powergrid.gov.bd/dist/css/tabler-payments.min.css" rel="stylesheet"/>
+<link href="https://erp.powergrid.gov.bd/dist/css/tabler-vendors.min.css" rel="stylesheet"/>
+<link href="https://erp.powergrid.gov.bd/dist/css/demo.min.css" rel="stylesheet"/>
+<link href="https://erp.powergrid.gov.bd/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+
+<!-- Styles -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+
+<!-- Tabler CSS -->
+
+
+<!-- DataTables CSS -->
+<link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+
+
+
+
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    .tooltip-inner {
+        white-space: pre-line;
+    }
+    .svg_small
+    {
+        transform: scale(0.7);
+    }
+    @font-face {
+        font-family: Kalpurush;
+        src: url(https://erp.powergrid.gov.bd/fonts/kalpurush.ttf);
+    }
+    @font-face {
+        font-family: SolaimanLipi;
+        src: url(https://erp.powergrid.gov.bd/fonts/SolaimanLipi.ttf);
+    }
+    .bn{
+        font-family: SolaimanLipi !important;
+    }
+    @import url('https://rsms.me/inter/inter.css');
+
+    :root {
+        --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    }
+
+    body {
+        font-feature-settings: "cv03", "cv04", "cv11";
+    }
+
+    .delbtn{
+        text-decoration: none; border: none; background: none; color: darkred;
+    }
+
+</style>
+<style>
+    @import url('https://rsms.me/inter/inter.css');
+    :root {
+        --tblr-font-sans-serif:  'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    }
+    body {
+        font-feature-settings: "cv03", "cv04", "cv11";
+    }
+</style>
+
+
+</head>
+<body>
+<!--<body class="layout-fluid">-->
+
+<div class="page">
+    <div class="sticky-top">
+        <header class="navbar navbar-expand-md navbar-light d-print-none">
+    <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+                aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+
+            <a href="https://pgcb.gov.bd/" style="font-size: 15px; font-weight: normal; text-decoration: none; font-family: Arial, Helvetica, sans-serif !important;">
+                <img class="navbar-brand-image" width="32" height="32" alt="PGCB"
+                     src="https://erp.powergrid.gov.bd/images/logo_r.png">
+                Back to Website
+            </a>
+        </h1>
+        <div class="navbar-nav flex-row order-md-last">
+                            <a href="https://erp.powergrid.gov.bd/login" class="nav-link d-flex lh-1 text-reset p-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login" width="24"
+                         height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                        <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
+                    </svg> &nbsp; Sign in</a>
+                        </div>
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
+
+                <ul class="navbar-nav">
+                                    </ul>
+
+            </div>
+        </div>
+    </div>
+</header>
+    </div>
+    <div class="page-wrapper">
+        <div class="page-header d-print-none">
+            <div class="container-xl">
+                    <div class="card mb-3">
+        <div class="card-body py-3">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="page-title" style="font-family: SolaimanLipi">
+                        ঘন্টাপ্রতি চাহিদা (সাবস্টেশন প্রান্ত), সরবরাহ ও লোডশেড
+                    </h2></div>
+                <div class="col-md-4 text-md-end">
+                    <a href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?d_gen=1"
+                       target="_blank"
+                       class="data-switch-link">
+                        <span style="font-family: SolaimanLipi">
+                            পূর্বের তথ্য (জেনারেশন প্রান্তের চাহিদানুযায়ী)
+                        </span>
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="15"
+                             height="15"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+                            <path d="M14 3h7v7"></path>
+                            <path d="M10 14L21 3"></path>
+                            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+            </div>
+        </div>
+
+        <div class="page-body">
+            <div class="container-xl">
+                    <div class="card">
+        <div class="card-body py-3">
+            <form method="GET" action="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn" accept-charset="UTF-8">
+
+            <input type="hidden" name="d_gen" value="0">
+
+            <div class="row align-items-center g-2">
+                <div class="col-sm-4 col-md-3 search-wrapper">
+                    <div class="input-icon">
+                        <span class="input-icon-addon">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="18"
+                                 height="18"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </span>
+
+                        <input type="text"
+                               name="search"
+                               id="search"
+                               class="form-control"
+                               placeholder="তারিখ দিয়ে খুঁজুন"
+                               style="font-family: SolaimanLipi"
+                               value="">
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">
+                        Search
+                    </button>
+                </div>
+
+                
+                <div class="col-auto ms-auto">
+                    <span class="btn btn-outline-primary">
+                        Total <strong class="mx-1"> 3,737</strong> Records
+                    </span>
+                </div>
+
+            </div>
+
+            </form>
+
+        </div>
+        <div class="table-responsive">
+            <table class="table generation-table mb-1">
+                <tr style="font-family: SolaimanLipi; background-color: #f6f8fa">
+                    <th>তারিখ</th>
+                    <th>সময়</th>
+                    <th> চাহিদা (মেঃওঃ)
+                        <span class="d-block custom-highlight">
+                            সাব-স্টেশন প্রান্তে
+                            <span/>
+                    </th>
+                    <th>
+                        সরবরাহ <br> (মেঃ ওঃ)
+                    </th>
+                    <th>
+                        লোডশেড <br> (মেঃ ওঃ)
+                    </th>
+                    <th style="min-width: 150px;">
+                        মন্তব্য
+                    </th>
+                </tr>
+
+                <tbody>
+                                    <tr>
+                        <td colspan="6" class="text-center py-5">
+                            <div>
+                                কোন তথ্য পাওয়া যায়নি !!!
+                            </div>
+                        </td>
+                    </tr>
+                                </tbody>
+            </table>
+        </div>
+        
+                    <div class="card-footer">
+                <ul class="pagination">
+
+                    <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=99998" rel="prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M15 6l-6 6l6 6"/>
+                    </svg>
+                </a></li>
+        
+                                                                                            <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=1">1</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=2">2</a></li>
+                                                                                    <li class="page-item"><a class="page-link">...</a></li>
+                                                                                                                    <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=65">65</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=66">66</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=67">67</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=68">68</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=69">69</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=70">70</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=71">71</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=72">72</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=73">73</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://erp.powergrid.gov.bd/web/generations/view_demand_supply_loadshed_bn?page=74">74</a></li>
+                                                                            <li class="disabled"><span><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                 d="M0 0h24v24H0z"
+                                                                                                 fill="none"/><path
+                                d="M9 6l6 6l-6 6"/></svg></span></li>
+            </ul>
+
+            </div>
+        
+    </div>
+
+            </div>
+        </div>
+
+        <footer class="footer footer-transparent d-print-none">
+    <div class="container-xl">
+        <div class="row text-center align-items-center flex-row-reverse">
+            <div class="col-lg-auto ms-lg-auto">
+                <ul class="list-inline list-inline-dots mb-0">
+                    <li class="list-inline-item">
+                        <a href="#" class="link-secondary">About</a>
+                    </li>
+                    <li class="list-inline-item"><a href="#" class="link-secondary">Help</a></li>
+                    <li class="list-inline-item">
+                                            </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                    <li class="list-inline-item font-weight-lighter">
+                        Copyright &copy; 2026
+                        <a href="http://powergrid.gov.bd/" class="link-secondary" style="font-weight: bold;">
+                            ICT, Power Grid
+                        </a>.
+                        All rights reserved.
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="link-secondary" rel="noopener">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+</div>
+<script src="https://erp.powergrid.gov.bd/js/printThis.js"></script>
+<script src="https://erp.powergrid.gov.bd/dist/js/demo-theme.min.js"></script>
+<script src="https://erp.powergrid.gov.bd/dist/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="https://erp.powergrid.gov.bd/dist/libs/jsvectormap/dist/js/jsvectormap.min.js"></script>
+<script src="https://erp.powergrid.gov.bd/dist/libs/jsvectormap/dist/maps/world.js"></script>
+<script src="https://erp.powergrid.gov.bd/dist/libs/jsvectormap/dist/maps/world-merc.js"></script>
+<!-- Tabler Core -->
+<script src="https://erp.powergrid.gov.bd/dist/js/tabler.min.js"></script>
+<script src="https://erp.powergrid.gov.bd/dist/js/demo.min.js"></script>
+
+<script src="https://erp.powergrid.gov.bd/dist/libs/nouislider/dist/nouislider.min.js" defer></script>
+<script src="https://erp.powergrid.gov.bd/dist/libs/litepicker/dist/litepicker.js" defer></script>
+<script src="https://erp.powergrid.gov.bd/dist/libs/tom-select/dist/js/tom-select.base.min.js" defer></script>
+<!-- Libs JS -->
+<script src="./dist/libs/fslightbox/index.js?1674944800" defer></script>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+
+
+<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+<script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+
+
+    $(document).ready(function () {
+        $('.msg').each(function() {
+            var $msg = $(this);
+            setTimeout(function() {
+                $msg.fadeOut('fast', function() {
+                    $msg.remove();
+                });
+            }, 3000);
+        });
+
+        $(".readonly").on('keydown paste focus', function(e){
+            if(e.keyCode != 9) // ignore tab
+                e.preventDefault();
+        });
+        $('input[type="number"]').on('click', function() {
+            $(this).select();
+        });
+        $('.input-source').on('click', function() {
+            $(this).select();
+        });
+        // Function to format the number in the Bangladesh currency format
+        function formatBangladeshiCurrency(amount) {
+            if (!amount) return "";
+            amount = amount.toString().replace(/,/g, ""); // Remove existing commas
+            const parts = amount.split(".");
+            const integerPart = parts[0];
+            const decimalPart = parts[1] ? "." + parts[1] : "";
+
+            // Format the integer part with commas
+            const lastThree = integerPart.slice(-3);
+            const otherNumbers = integerPart.slice(0, -3);
+            const formattedInteger =
+                otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + (otherNumbers ? "," : "") + lastThree;
+
+            return formattedInteger + decimalPart;
+        }
+
+        // On input change, update the formatted value
+        $(".bdcurrency-input").on("input", function () {
+            const rawValue = $(this).val();
+            const formattedValue = formatBangladeshiCurrency(rawValue);
+            $(".bdcurrency-display").text(formattedValue); // Update the span
+            $(this).val(formattedValue); // Optionally update the input itself
+        });
+
+
+        $('.datepicker').datepicker({
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+            todayBtn: "linked",
+            todayHighlight : true,
+            keyboardNavigation : true
+        });
+
+        //$('.msg').fadeOut(5000);
+        $('.select2').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: "select2--small",
+            dropdownCssClass: "select2--small",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: true,
+        });
+        $('.select3').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: "select2--small",
+            dropdownCssClass: "select2--small",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            closeOnSelect: false,
+        });
+
+        $('.erpdatatable').DataTable({
+            select: true,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "pageLength": 250,
+            "ordering": false
+
+
+        });
+        var t = $('.searchdatatable').DataTable({
+
+            select: true,
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": true,
+            "pageLength": 250,
+            "ordering": true,
+            fixedHeader: true,
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel','print',
+                {
+                    extend: 'pdfHtml5',
+                    text: 'Pdf A4 Portrait',
+
+                    exportOptions: {
+                        columns: ':visible:not(.no-display)', orthogonal: 'print'
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: 'Pdf A4 Landscape',
+                    orientation: 'landscape',
+
+                    exportOptions: {
+                        columns: ':visible:not(.no-display)', orthogonal: 'print'
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: 'Pdf Legal Portrait',
+                    pageSize: 'LEGAL',
+
+                    exportOptions: {
+                        columns: ':visible:not(.no-display)', orthogonal: 'print'
+                    }
+                },
+
+                {
+                    extend: 'pdfHtml5',
+                    text: 'Pdf Legal Landscape',
+                    pageSize: 'LEGAL',
+                    orientation: 'landscape',
+
+                    exportOptions: {
+                        columns: ':visible:not(.no-display)', orthogonal: 'print'
+                    }
+                }
+            ],
+
+
+        });
+
+
+
+    });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+
+</script>
+<script src="https://erp.powergrid.gov.bd/sw.js"></script>
+<script>
+    if ("serviceWorker" in navigator) {
+        // Register a service worker hosted at the root of the
+        // site using the default scope.
+        navigator.serviceWorker.register("/sw.js").then(
+            (registration) => {
+            console.log("Service worker registration succeeded:", registration);
+    },
+        (error) => {
+            console.error('Service worker registration failed: ${error}');
+        },
+    );
+    } else {
+        console.error("Service workers are not supported.");
+    }
+</script>
+
+
+
+
+</body>
+</html>
