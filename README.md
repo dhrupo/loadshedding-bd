@@ -242,6 +242,11 @@ The `scrape` Action runs every hour (and on every push to `main`): tests, scrape
 static files; on Pages the data is as fresh as the last hourly run, and the "checked N seconds
 ago" line is simply absent. One-time setup: Settings → Pages → Source: **GitHub Actions**.
 
+**Vercel:** `vercel.json` makes Vercel serve the same three things as plain static files (`index.html`, `static/`, `data/`),
+and tells it not to run `app.py`. Vercel's disk is read-only and keeps nothing between requests, so the live server could not
+save what it fetches there. Each hourly `data:` commit to `main` redeploys the site, so Vercel is as fresh as Pages.
+One-time setup: import the repository at vercel.com/new and leave every setting as it is.
+
 **With the live check (any Python host):** `uvicorn app:app --host 0.0.0.0 --port $PORT`, single
 worker (the refresh locks are per process). The server then re-checks Power Grid Bangladesh
 whenever a visitor arrives and the last check is over 2 minutes old.

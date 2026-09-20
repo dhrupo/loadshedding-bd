@@ -1,0 +1,6 @@
+{
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "mkdir -p _site && cp -r index.html static data _site/",
+  "outputDirectory": "_site"
+}
