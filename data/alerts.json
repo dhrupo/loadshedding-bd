@@ -1,5 +1,24 @@
 [
  {
+  "id": "3a49168e-cff5-4db6-b80c-f467f2983fb7",
+  "status": "Actual",
+  "msg_type": "Alert",
+  "cancels": [],
+  "event": "Wind",
+  "severity": "Severe",
+  "effective": "2026-09-21T15:00:00+00:00",
+  "expires": "2026-09-22T15:00:00+00:00",
+  "headline": "Special Bulletin No. 01 - Depression over West-central Bay - Signal 3 - 21.09.2026",
+  "headline_bn": "আবহাওয়ার বিশেষ বিজ্ঞপ্তি ক্রমিক নম্বর-০১ - পশ্চিমমধ্য বঙ্গোপসাগরে নিম্নচাপ - সতর্ক সংকেত ৩ - ২১.০৯.২০২৬",
+  "web": "https://cap.bmd.gov.bd/bmd-cap-alerts/special-bulletin-01-depression-north-bay-21092026/",
+  "districts": [
+   "Bagerhat",
+   "Chittagong",
+   "Cox's Bazar",
+   "Patuakhali"
+  ]
+ },
+ {
   "id": "576a9c77-699d-4372-855e-06cd28f2bc2e",
   "status": "Actual",
   "msg_type": "Alert",
@@ -131,25 +150,6 @@
    "Satkhira",
    "Shariatpur",
    "Tangail"
-  ]
- },
- {
-  "id": "bb1e937b-8874-4c12-ae7f-dab058dd7bdd",
-  "status": "Actual",
-  "msg_type": "Alert",
-  "cancels": [],
-  "event": "Wind",
-  "severity": "Severe",
-  "effective": "2026-07-26T04:00:00+00:00",
-  "expires": "2026-07-27T04:00:00+00:00",
-  "headline": "Local Cautionary Signal No. 3 for Chattogram, Cox's Bazar, Mongla and Payra Ports - Low Pressure over Northwest Bay",
-  "headline_bn": "",
-  "web": "https://cap.bmd.gov.bd/bmd-cap-alerts/warning-message-low-pressure-maritime-ports-signal-3-26072026/",
-  "districts": [
-   "Bagerhat",
-   "Chittagong",
-   "Cox's Bazar",
-   "Patuakhali"
   ]
  }
 ]
