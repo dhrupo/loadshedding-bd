@@ -1,5 +1,26 @@
 [
  {
+  "id": "ef6dbd72-36de-4744-9b88-bf384a67ad53",
+  "status": "Actual",
+  "msg_type": "Update",
+  "cancels": [
+   "3a49168e-cff5-4db6-b80c-f467f2983fb7"
+  ],
+  "event": "Wind",
+  "severity": "Severe",
+  "effective": "2026-09-22T00:00:00+00:00",
+  "expires": "2026-09-22T12:00:00+00:00",
+  "headline": "Special Bulletin No. 01 - Depression over West-central Bay - Signal 3 - 21.09.2026",
+  "headline_bn": "আবহাওয়ার বিশেষ বিজ্ঞপ্তি ক্রমিক নম্বর-০২ - পশ্চিমমধ্য বঙ্গোপসাগরে নিম্নচাপ - সতর্ক সংকেত ৩ - ২২.০৯.২০২৬",
+  "web": "https://cap.bmd.gov.bd/bmd-cap-alerts/special-bulletin-no-02---depression-north-bay---22092026/",
+  "districts": [
+   "Bagerhat",
+   "Chittagong",
+   "Cox's Bazar",
+   "Patuakhali"
+  ]
+ },
+ {
   "id": "3a49168e-cff5-4db6-b80c-f467f2983fb7",
   "status": "Actual",
   "msg_type": "Alert",
@@ -95,61 +116,6 @@
    "Satkhira",
    "Sunamganj",
    "Sylhet"
-  ]
- },
- {
-  "id": "6e9b00f3-2d2f-4942-a834-cddc7ee36abc",
-  "status": "Actual",
-  "msg_type": "Alert",
-  "cancels": [],
-  "event": "Rain",
-  "severity": "Severe",
-  "effective": "2026-08-06T03:00:00+00:00",
-  "expires": "2026-08-07T03:00:00+00:00",
-  "headline": "Heavy Rainfall Warning for Dhaka, Khulna, Barishal and Chattogram Divisions - 06.08.2026",
-  "headline_bn": "",
-  "web": "https://cap.bmd.gov.bd/bmd-cap-alerts/heavy-rainfall-warning--dhaka-khulna-barishal-chattogram---06082026/",
-  "districts": [
-   "Bagerhat",
-   "Bandarban",
-   "Barguna",
-   "Barisal",
-   "Bhola",
-   "Brahamanbaria",
-   "Chandpur",
-   "Chittagong",
-   "Chuadanga",
-   "Comilla",
-   "Cox's Bazar",
-   "Dhaka",
-   "Faridpur",
-   "Feni",
-   "Gazipur",
-   "Gopalganj",
-   "Jessore",
-   "Jhalokati",
-   "Jhenaidah",
-   "Khagrachhari",
-   "Khulna",
-   "Kishoreganj",
-   "Kushtia",
-   "Lakshmipur",
-   "Madaripur",
-   "Magura",
-   "Manikganj",
-   "Meherpur",
-   "Munshiganj",
-   "Narail",
-   "Narayanganj",
-   "Narsingdi",
-   "Noakhali",
-   "Patuakhali",
-   "Pirojpur",
-   "Rajbari",
-   "Rangamati",
-   "Satkhira",
-   "Shariatpur",
-   "Tangail"
   ]
  }
 ]
