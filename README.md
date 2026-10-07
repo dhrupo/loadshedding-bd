@@ -107,7 +107,7 @@ Both forecasts are replayed on past days and the page shows the result next to t
 |---|---|---|---|
 | Next 24 h demand | least squares on hour, weekday, temperature, humidity, last week's level, anchored to the latest actual hours | 3.5% (2.4% at 21:00) | 4.8% (same hour yesterday) |
 | Next 24 h loadshed | ½ yesterday's loadshed that hour + ½ (forecast demand − last 3 days' supply) | 603 MW | 757 MW |
-| Next 30 days peak demand | last 14 days' average peak, adjusted for temperature difference | 4.35% | 5.9% (last 14 days' average) |
+| Next 30 days peak demand | last 14 days' average peak, adjusted for temperature difference; how much each +1 °C adds (about 2.5% of the peak) is learned from all the PGB generation history in `generation.csv` (since 2025-09-19) | 4.07% (was 4.37% with the heat effect from the last 60 days alone; better in 8 of 14 test starts, mostly the worst ones) | 5.9% (last 14 days' average) |
 | Hours without power per day | 24 × unserved ÷ demand, blended with the 14-day average | about 1.1 h | — |
 | Time of day cuts are likeliest | model gap plus the recent loadshedding profile | right about 6 days in 10 | — |
 
@@ -115,8 +115,10 @@ The 30-day range is the 10th–90th percentile of the backtest's own misses. Bac
 weather, so live forecasts (which rely on predicted or typical weather) miss by somewhat more.
 Loadshed depends on how much fuel arrives, which no weather model can see; treat it as the least
 certain number on the page. BPDB's own evening-peak forecast is scored the same way for comparison.
+The heat effect is learned from generation (power delivered), which reads low on days with heavy
+cuts; it is fitted as a share of the peak so that a growing grid does not skew it.
 
-### Tried and not adopted (2026-09-19)
+### Tried and not adopted (2026-09-19, 2026-10-07)
 
 Each was replayed on the same past days as the forecasts above and dropped because it did not
 clearly beat the current method:
@@ -126,6 +128,9 @@ clearly beat the current method:
 | Gas delivered to power plants (Petrobangla) as an input to daily outage hours | 1.32 h (ridge), 1.16 h (gradient boosting) | 1.08 h |
 | Gradient boosting for 24 h demand | 4.03% alone, 3.45% averaged with current | 3.51% |
 | 12 months of BPDB evening-peak demand to learn the heat effect for the 30-day outlook | 4.42% | 4.35% |
+| Ten years of PGB generation (2015→, all 2,055 pages) to learn the heat effect | 4.09% | 4.07% (history since 2025-09) |
+| Heat effect learned only from the same season (±1 month) | 4.11% | 4.07% |
+| Average of the 60-day and the history-learned 30-day outlook | 4.13% | 4.07% |
 
 Gas does track loadshedding (correlation −0.46 with daily outage hours), but yesterday's outage
 hours track it more closely (+0.82), and gas figures arrive 1–2 days late, so by the time they
