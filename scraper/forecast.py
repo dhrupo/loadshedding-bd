@@ -4,7 +4,8 @@
 next_hours: the next 24 hours, hourly (least squares on hour, weekday, weather, recent level).
 next_days: a 30-day daily outlook as a range. Both are scored on past days.
 Hourly loadshed = half of yesterday's loadshed at that hour + half of (demand - last 3 days' supply).
-Daily peak = last 14 days' average peak, adjusted for how much warmer the day is than those 14 days.
+Daily peak = last 14 days' average peak, adjusted for how much warmer the day is than those 14 days;
+the share each +1 °C adds is learned from the generation history when there are 60+ days of it.
 The daily range is the 10th-90th percentile of the backtest's own errors, not the model's fit.
 """
 
@@ -22,6 +23,7 @@ TRAIN_DAYS = 60
 ANCHOR_HOURS = 3
 ANCHOR_DECAY = 0.9
 LEVEL_HOURS = range(24, 24 + 168)
+HEAT_MIN_DAYS = 60
 
 
 def _hourly(rows):
@@ -199,23 +201,68 @@ def _daily_table(history, weather):
     return days, peak_d, peak_s, tmean
 
 
-def _anomaly_model(days, peak_d, tmean, idx):
+def _heat_days(generation, weather) -> list[tuple]:
+    """Per day of generation history: (date, peak above its last 14 days' mean as a share, temperature above theirs, Friday)."""
+    peak, hours, temps = defaultdict(float), defaultdict(int), defaultdict(list)
+    for r in generation:
+        mw = float(r["generation_mw"] or 0)
+        if r["timestamp"].endswith(":00") and 3000 <= mw <= 30000:
+            peak[r["timestamp"][:10]] = max(peak[r["timestamp"][:10]], mw)
+            hours[r["timestamp"][:10]] += 1
+    for r in weather:
+        temps[r["timestamp"][:10]].append(float(r["temp_c"]))
+    days = sorted(d for d in peak if hours[d] >= 20 and len(temps[d]) >= 20)
+    tmean = {d: sum(temps[d]) / len(temps[d]) for d in days}
+    out = []
+    for j in range(14, len(days)):
+        window = days[j - 14:j]
+        if (date.fromisoformat(days[j]) - date.fromisoformat(window[0])).days > 21:
+            continue
+        mean_peak = np.mean([peak[d] for d in window])
+        share = peak[days[j]] / mean_peak - 1
+        # Blackouts and mistyped readings swing a day's peak far past any weather effect.
+        if abs(share) <= 0.25:
+            out.append((days[j], share, tmean[days[j]] - np.mean([tmean[d] for d in window]),
+                        float(date.fromisoformat(days[j]).weekday() == 4)))
+    return out
+
+
+def _heat(heat_days, before: str) -> float | None:
+    heat_days = [r for r in heat_days if r[0] < before]
+    if len(heat_days) < HEAT_MIN_DAYS:
+        return None
+    beta, *_ = np.linalg.lstsq(np.array([[1.0, dt, fri] for _, _, dt, fri in heat_days]),
+                               np.array([share for _, share, _, _ in heat_days]), rcond=None)
+    return float(beta[1])
+
+
+def _anomaly_model(days, peak_d, tmean, idx, heat=None):
+    """heat: share of the peak added per +1 °C, learned from longer history; None learns it from these days."""
     xs, ys = [], []
     for j in range(max(14, idx - 59), idx + 1):
         window = days[j - 14:j]
-        ys.append(peak_d[days[j]] - np.mean([peak_d[d] for d in window]))
-        xs.append([1.0, tmean[days[j]] - np.mean([tmean[d] for d in window]), float(date.fromisoformat(days[j]).weekday() == 4)])
+        mean_peak, warmer = np.mean([peak_d[d] for d in window]), tmean[days[j]] - np.mean([tmean[d] for d in window])
+        friday = float(date.fromisoformat(days[j]).weekday() == 4)
+        if heat is None:
+            ys.append(peak_d[days[j]] - mean_peak)
+            xs.append([1.0, warmer, friday])
+        else:
+            ys.append(peak_d[days[j]] - mean_peak - heat * mean_peak * warmer)
+            xs.append([1.0, friday])
     beta, *_ = np.linalg.lstsq(np.array(xs), np.array(ys), rcond=None)
     last14 = days[idx - 13:idx + 1]
     level, temp_base = np.mean([peak_d[d] for d in last14]), np.mean([tmean[d] for d in last14])
-    return lambda day, temp: float(level + beta[0] + beta[1] * (temp - temp_base) + beta[2] * (day.weekday() == 4))
+    if heat is None:
+        return lambda day, temp: float(level + beta[0] + beta[1] * (temp - temp_base) + beta[2] * (day.weekday() == 4))
+    return lambda day, temp: float(level + beta[0] + heat * level * (temp - temp_base) + beta[1] * (day.weekday() == 4))
 
 
-def next_days(history: list[dict], weather: list[dict], normals: list[dict], band: tuple, days: int = 30) -> list[dict]:
+def next_days(history: list[dict], weather: list[dict], normals: list[dict], band: tuple, days: int = 30,
+              generation: list[dict] = ()) -> list[dict]:
     table, peak_d, peak_s, tmean = _daily_table(history, weather)
     if len(table) < 30:
         raise ValueError(f"outlook: need 30 days of history, have {len(table)}")
-    predict = _anomaly_model(table, peak_d, tmean, len(table) - 1)
+    predict = _anomaly_model(table, peak_d, tmean, len(table) - 1, _heat(_heat_days(generation, weather), table[-1]))
     origin = date.fromisoformat(table[-1])
     supply = max(peak_s[d] for d in table[-14:])
     by_day = _hours_by_day(history)
@@ -245,13 +292,15 @@ def next_days(history: list[dict], weather: list[dict], normals: list[dict], ban
     return out
 
 
-def backtest_days(history: list[dict], weather: list[dict], horizon: int = 30, step: int = 7) -> dict:
+def backtest_days(history: list[dict], weather: list[dict], horizon: int = 30, step: int = 7,
+                  generation: list[dict] = ()) -> dict:
     table, peak_d, peak_s, tmean = _daily_table(history, weather)
     by_day = _hours_by_day(history)
+    heat_days = _heat_days(generation, weather)
     pct_err, shed_err, hour_err, window_hits, residuals, origins = [], [], [], [], [], 0
     for idx in range(45, len(table) - horizon, step):
         origins += 1
-        predict = _anomaly_model(table, peak_d, tmean, idx)
+        predict = _anomaly_model(table, peak_d, tmean, idx, _heat(heat_days, table[idx]))
         supply = max(peak_s[d] for d in table[idx - 13:idx + 1])
         shape, cap = _day_profile(by_day, table[idx - 13:idx + 1])
         recent = sum(outage_hours(by_day[d]) for d in table[idx - 13:idx + 1]) / 14
@@ -294,16 +343,17 @@ def update() -> None:
     demand = read_csv(data / "demand.csv")
     weather = read_csv(data / "weather.csv") + read_csv(data / "weather_forecast.csv")
     history_weather = read_csv(data / "weather.csv")
+    generation = read_csv(data / "generation.csv")
     result = {
         "generated_at": datetime.now(BD_TIME).strftime("%Y-%m-%dT%H:%M"),
         "next_hours": next_hours(demand, weather, 24),
         "next_hours_score": backtest_hours(demand, history_weather, 30),
-        "next_days_score": backtest_days(demand, history_weather),
+        "next_days_score": backtest_days(demand, history_weather, generation=generation),
         "bpdb_score": score_bpdb(read_csv(data / "bpdb_forecast.csv"), read_csv(data / "bpdb_daily.csv")),
     }
     score = result["next_days_score"]
     result["next_days"] = next_days(demand, weather, read_csv(data / "weather_normals.csv"),
-                                    (score["band_low_mw"], score["band_high_mw"]), 30)
+                                    (score["band_low_mw"], score["band_high_mw"]), 30, generation)
     ahead = result["next_hours"]
     result["next_24h_outage_hours"] = round(outage_hours([{"demand_mw": r["demand_mw"], "supply_mw": r["demand_mw"] - r["loadshed_mw"]} for r in ahead]), 1)
     for section in ("next_hours", "next_days"):

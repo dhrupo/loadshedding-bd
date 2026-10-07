@@ -112,6 +112,82 @@ class OutlookTest(unittest.TestCase):
         self.assertGreaterEqual(score["band_high_mw"], 0)
 
 
+def generation_history(days, start, heat=0.025):
+    """Hourly generation whose daily peak rises `heat` (share of peak) per +1 °C, with the weather for it."""
+    generation, weather = [], []
+    for i in range(days * 24):
+        t = start + timedelta(hours=i)
+        ts = t.strftime("%Y-%m-%dT%H:%M")
+        temp = 30 + 3 * math.sin(i // 24 * 0.9)
+        peak = 15000 * (1 + heat * (temp - 30))
+        generation.append({"timestamp": ts, "generation_mw": peak * (1.0 if t.hour == 20 else 0.8)})
+        weather.append({"timestamp": ts, "temp_c": temp, "humidity_pct": 70.0})
+    return generation, weather
+
+
+class HistoryHeatTest(unittest.TestCase):
+    def setUp(self):
+        self.demand, weather = world(days=90)
+        for w in weather:
+            w["temp_c"] = 30.0
+        last = datetime.fromisoformat(self.demand[-1]["timestamp"])
+        self.ahead = [(last + timedelta(hours=h)).strftime("%Y-%m-%dT%H:%M") for h in range(1, 16 * 24 + 1)]
+        self.normals = [{"month_day": f"{m:02d}-{d:02d}", "mean_temp_c": 30.0, "max_temp_c": 33.0, "mean_humidity_pct": 70.0}
+                        for m in range(1, 13) for d in range(1, 32)]
+        self.generation, history_weather = generation_history(200, START - timedelta(days=200))
+        self.weather = history_weather + weather
+
+    def outlook(self, temp, generation, days=5):
+        weather = self.weather + [{"timestamp": ts, "temp_c": temp, "humidity_pct": 70.0} for ts in self.ahead]
+        return forecast.next_days(self.demand, weather, self.normals, band=(0, 0), days=days, generation=generation)
+
+    def test_flat_recent_weather_still_gets_the_heat_effect_learned_from_history(self):
+        hot, cool = self.outlook(36.0, self.generation), self.outlook(26.0, self.generation)
+        level = sum(max(r["demand_mw"] for r in self.demand[-24 * d:len(self.demand) - 24 * (d - 1)]) for d in range(1, 15)) / 14
+        for h, c in zip(hot, cool):
+            self.assertAlmostEqual(h["demand_peak_mw"] - c["demand_peak_mw"], 0.025 * level * 10, delta=0.15 * 0.025 * level * 10)
+
+    def test_blackout_days_in_history_do_not_skew_the_heat_effect(self):
+        hottest = sorted({r["timestamp"][:10] for r in self.generation[14 * 24:]},
+                         key=lambda d: -next(w["temp_c"] for w in self.weather if w["timestamp"].startswith(d)))[:3]
+        generation = [{**r, "generation_mw": r["generation_mw"] * 0.4} if r["timestamp"][:10] in hottest else r
+                      for r in self.generation]
+        hot, cool = self.outlook(36.0, generation), self.outlook(26.0, generation)
+        level = sum(max(r["demand_mw"] for r in self.demand[-24 * d:len(self.demand) - 24 * (d - 1)]) for d in range(1, 15)) / 14
+        for h, c in zip(hot, cool):
+            self.assertAlmostEqual(h["demand_peak_mw"] - c["demand_peak_mw"], 0.025 * level * 10, delta=0.15 * 0.025 * level * 10)
+
+    def test_days_after_the_forecast_start_are_not_used_to_learn_heat(self):
+        later, later_weather = generation_history(60, START + timedelta(days=90), heat=-0.05)
+        weather = self.weather + later_weather
+        known = forecast.next_days(self.demand, weather, self.normals, band=(0, 0), days=10, generation=self.generation)
+        peeking = forecast.next_days(self.demand, weather, self.normals, band=(0, 0), days=10, generation=self.generation + later)
+        self.assertEqual([r["demand_peak_mw"] for r in peeking], [r["demand_peak_mw"] for r in known])
+
+    def test_too_little_history_leaves_the_outlook_as_it_was(self):
+        short, short_weather = generation_history(30, START - timedelta(days=30))
+        weather = short_weather + self.weather[len(self.generation):] + [
+            {"timestamp": ts, "temp_c": 33.0, "humidity_pct": 70.0} for ts in self.ahead]
+        before = forecast.next_days(self.demand, weather, self.normals, band=(0, 0), days=10)
+        after = forecast.next_days(self.demand, weather, self.normals, band=(0, 0), days=10, generation=short)
+        self.assertEqual(after, before)
+
+    def test_backtest_scores_the_outlook_with_the_history_heat_effect(self):
+        demand, weather = [], []
+        for i in range(120 * 24):
+            t = START + timedelta(hours=i)
+            ts = t.strftime("%Y-%m-%dT%H:%M")
+            temp = 30.0 if i < 75 * 24 else 30 + 3 * math.sin(i // 24 * 0.9)
+            d = 15000 * (1 + 0.025 * (temp - 30)) * (1.0 if t.hour == 20 else 0.8)
+            demand.append({"timestamp": ts, "demand_mw": d, "supply_mw": d, "loadshed_mw": 0.0})
+            weather.append({"timestamp": ts, "temp_c": temp, "humidity_pct": 70.0})
+        weather = self.weather[:len(self.generation)] + weather
+        without = forecast.backtest_days(demand, weather)["demand_mape_pct"]
+        with_history = forecast.backtest_days(demand, weather, generation=self.generation)["demand_mape_pct"]
+        self.assertGreater(without, 1.0)
+        self.assertLess(with_history, 0.5)
+
+
 class OutageHoursTest(unittest.TestCase):
     def test_share_of_energy_not_supplied_becomes_hours_per_home(self):
         rows = [{"timestamp": f"2026-09-01T{h:02d}:00", "demand_mw": 100.0, "supply_mw": 90.0} for h in range(24)]
