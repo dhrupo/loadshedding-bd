@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T03:01",
+ "generated_at": "2026-10-10T06:54",
  "next_hours": [
   {
    "timestamp": "2026-10-10T01:00",
@@ -480,13 +480,13 @@
    "date": "2026-10-24",
    "weather": "forecast",
    "mean_temp_c": 29.1,
-   "demand_peak_mw": 15967,
-   "demand_low_mw": 15058,
-   "demand_high_mw": 17205,
+   "demand_peak_mw": 15977,
+   "demand_low_mw": 15068,
+   "demand_high_mw": 17215,
    "supply_peak_mw": 16247,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
-   "loadshed_high_mw": 958,
+   "loadshed_high_mw": 968,
    "outage_hours": 0.8,
    "cut_from": 0,
    "cut_to": 6,
@@ -495,20 +495,20 @@
   },
   {
    "date": "2026-10-25",
-   "weather": "normal",
-   "mean_temp_c": 26.5,
-   "demand_peak_mw": 14919,
-   "demand_low_mw": 14010,
-   "demand_high_mw": 16157,
+   "weather": "forecast",
+   "mean_temp_c": 28.6,
+   "demand_peak_mw": 15770,
+   "demand_low_mw": 14861,
+   "demand_high_mw": 17008,
    "supply_peak_mw": 16247,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
-   "loadshed_high_mw": 0,
+   "loadshed_high_mw": 761,
    "outage_hours": 0.8,
    "cut_from": 0,
    "cut_to": 7,
    "outage_hours_low": 0.8,
-   "outage_hours_high": 0.8
+   "outage_hours_high": 1.1
   },
   {
    "date": "2026-10-26",
