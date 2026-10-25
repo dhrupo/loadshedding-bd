@@ -1,5 +1,19 @@
 [
  {
+  "id": "33f837a8-c1d1-481c-8230-0512abb2824e",
+  "status": "Actual",
+  "msg_type": "Alert",
+  "cancels": [],
+  "event": "Wind",
+  "severity": "Minor",
+  "effective": "2026-10-25T00:00:00+00:00",
+  "expires": "2026-10-26T00:00:00+00:00",
+  "headline": "Depression over East central and adjoining Southeast Bay likely to intensify into a Deep Depression",
+  "headline_bn": "পূর্ব-মধ্য ও সংলগ্ন দক্ষিণ-পূর্ব বঙ্গোপসাগরের নিম্নচাপটি গভীর নিম্নচাপে পরিণত হতে পারে",
+  "web": "https://cap.bmd.gov.bd/bmd-cap-alerts/special-weather-bulletin-no-02-depression-in-east-central-bay-25-oct-2026/",
+  "districts": []
+ },
+ {
   "id": "778339bb-aa90-4b4f-aad5-687abf172332",
   "status": "Actual",
   "msg_type": "Alert",
@@ -80,19 +94,5 @@
    "Cox's Bazar",
    "Patuakhali"
   ]
- },
- {
-  "id": "576a9c77-699d-4372-855e-06cd28f2bc2e",
-  "status": "Actual",
-  "msg_type": "Alert",
-  "cancels": [],
-  "event": "Wind",
-  "severity": "Moderate",
-  "effective": "2026-09-20T09:00:00+00:00",
-  "expires": "2026-09-21T09:00:00+00:00",
-  "headline": "Well-marked Low over Eastcentral Bay - 20.09.2026",
-  "headline_bn": "পূর্বমধ্য বঙ্গোপসাগরে সুস্পষ্ট লঘুচাপ - ২০.০৯.২০২৬",
-  "web": "https://cap.bmd.gov.bd/bmd-cap-alerts/maritime-alert-well-marked-low-north-bay-20092026/",
-  "districts": []
  }
 ]
