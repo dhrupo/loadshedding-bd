@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-09T01:46",
+ "generated_at": "2026-11-09T05:45",
  "next_hours": [
   {
    "timestamp": "2026-11-09T01:00",
@@ -479,10 +479,10 @@
   {
    "date": "2026-11-23",
    "weather": "forecast",
-   "mean_temp_c": 22.9,
-   "demand_peak_mw": 13034,
-   "demand_low_mw": 11801,
-   "demand_high_mw": 14185,
+   "mean_temp_c": 23.1,
+   "demand_peak_mw": 13110,
+   "demand_low_mw": 11877,
+   "demand_high_mw": 14261,
    "supply_peak_mw": 15505,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -495,11 +495,11 @@
   },
   {
    "date": "2026-11-24",
-   "weather": "normal",
-   "mean_temp_c": 22.8,
-   "demand_peak_mw": 13007,
-   "demand_low_mw": 11774,
-   "demand_high_mw": 14158,
+   "weather": "forecast",
+   "mean_temp_c": 25.8,
+   "demand_peak_mw": 14104,
+   "demand_low_mw": 12871,
+   "demand_high_mw": 15255,
    "supply_peak_mw": 15505,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
