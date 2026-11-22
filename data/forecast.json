@@ -1,221 +1,221 @@
 {
- "generated_at": "2026-11-22T05:21",
+ "generated_at": "2026-11-22T12:53",
  "next_hours": [
   {
-   "timestamp": "2026-11-22T01:00",
-   "demand_mw": 10037,
-   "demand_low_mw": 9135,
-   "demand_high_mw": 10915,
-   "supply_mw": 9251,
-   "loadshed_mw": 393,
-   "temp_c": 22.1
-  },
-  {
-   "timestamp": "2026-11-22T02:00",
-   "demand_mw": 9717,
-   "demand_low_mw": 8815,
-   "demand_high_mw": 10595,
-   "supply_mw": 8993,
-   "loadshed_mw": 362,
-   "temp_c": 21.8
-  },
-  {
-   "timestamp": "2026-11-22T03:00",
-   "demand_mw": 9487,
-   "demand_low_mw": 8585,
-   "demand_high_mw": 10365,
-   "supply_mw": 8704,
-   "loadshed_mw": 391,
-   "temp_c": 21.7
-  },
-  {
-   "timestamp": "2026-11-22T04:00",
-   "demand_mw": 9196,
-   "demand_low_mw": 8294,
-   "demand_high_mw": 10074,
-   "supply_mw": 8457,
-   "loadshed_mw": 369,
-   "temp_c": 21.6
-  },
-  {
-   "timestamp": "2026-11-22T05:00",
-   "demand_mw": 8998,
-   "demand_low_mw": 8097,
-   "demand_high_mw": 9877,
-   "supply_mw": 8392,
-   "loadshed_mw": 303,
-   "temp_c": 21.5
-  },
-  {
-   "timestamp": "2026-11-22T06:00",
-   "demand_mw": 8365,
-   "demand_low_mw": 7463,
-   "demand_high_mw": 9243,
-   "supply_mw": 8407,
-   "loadshed_mw": 0,
-   "temp_c": 21.2
-  },
-  {
-   "timestamp": "2026-11-22T07:00",
-   "demand_mw": 8711,
-   "demand_low_mw": 7810,
-   "demand_high_mw": 9589,
-   "supply_mw": 9165,
-   "loadshed_mw": 0,
-   "temp_c": 21.2
-  },
-  {
-   "timestamp": "2026-11-22T08:00",
-   "demand_mw": 8955,
-   "demand_low_mw": 8053,
-   "demand_high_mw": 9833,
-   "supply_mw": 9893,
-   "loadshed_mw": 0,
-   "temp_c": 22.3
-  },
-  {
-   "timestamp": "2026-11-22T09:00",
-   "demand_mw": 9150,
-   "demand_low_mw": 8248,
-   "demand_high_mw": 10028,
-   "supply_mw": 9966,
-   "loadshed_mw": 0,
-   "temp_c": 24.0
-  },
-  {
    "timestamp": "2026-11-22T10:00",
-   "demand_mw": 9611,
-   "demand_low_mw": 8709,
-   "demand_high_mw": 10489,
+   "demand_mw": 10409,
+   "demand_low_mw": 9495,
+   "demand_high_mw": 11297,
    "supply_mw": 10047,
-   "loadshed_mw": 0,
+   "loadshed_mw": 181,
    "temp_c": 25.7
   },
   {
    "timestamp": "2026-11-22T11:00",
-   "demand_mw": 10036,
-   "demand_low_mw": 9135,
-   "demand_high_mw": 10915,
+   "demand_mw": 10808,
+   "demand_low_mw": 9894,
+   "demand_high_mw": 11697,
    "supply_mw": 10438,
-   "loadshed_mw": 0,
-   "temp_c": 26.9
-  },
-  {
-   "timestamp": "2026-11-22T12:00",
-   "demand_mw": 10872,
-   "demand_low_mw": 9971,
-   "demand_high_mw": 11750,
-   "supply_mw": 10988,
-   "loadshed_mw": 0,
-   "temp_c": 27.5
-  },
-  {
-   "timestamp": "2026-11-22T13:00",
-   "demand_mw": 11177,
-   "demand_low_mw": 10276,
-   "demand_high_mw": 12056,
-   "supply_mw": 11190,
-   "loadshed_mw": 0,
-   "temp_c": 27.8
-  },
-  {
-   "timestamp": "2026-11-22T14:00",
-   "demand_mw": 11289,
-   "demand_low_mw": 10388,
-   "demand_high_mw": 12168,
-   "supply_mw": 10472,
-   "loadshed_mw": 409,
-   "temp_c": 28.5
-  },
-  {
-   "timestamp": "2026-11-22T15:00",
-   "demand_mw": 11419,
-   "demand_low_mw": 10517,
-   "demand_high_mw": 12297,
-   "supply_mw": 10258,
-   "loadshed_mw": 580,
-   "temp_c": 28.6
-  },
-  {
-   "timestamp": "2026-11-22T16:00",
-   "demand_mw": 11217,
-   "demand_low_mw": 10315,
-   "demand_high_mw": 12095,
-   "supply_mw": 9886,
-   "loadshed_mw": 665,
-   "temp_c": 28.0
-  },
-  {
-   "timestamp": "2026-11-22T17:00",
-   "demand_mw": 11170,
-   "demand_low_mw": 10268,
-   "demand_high_mw": 12048,
-   "supply_mw": 10513,
-   "loadshed_mw": 328,
+   "loadshed_mw": 185,
    "temp_c": 26.7
   },
   {
+   "timestamp": "2026-11-22T12:00",
+   "demand_mw": 11395,
+   "demand_low_mw": 10480,
+   "demand_high_mw": 12283,
+   "supply_mw": 10988,
+   "loadshed_mw": 203,
+   "temp_c": 26.9
+  },
+  {
+   "timestamp": "2026-11-22T13:00",
+   "demand_mw": 11867,
+   "demand_low_mw": 10953,
+   "demand_high_mw": 12756,
+   "supply_mw": 11190,
+   "loadshed_mw": 339,
+   "temp_c": 27.9
+  },
+  {
+   "timestamp": "2026-11-22T14:00",
+   "demand_mw": 11790,
+   "demand_low_mw": 10876,
+   "demand_high_mw": 12678,
+   "supply_mw": 10472,
+   "loadshed_mw": 659,
+   "temp_c": 28.2
+  },
+  {
+   "timestamp": "2026-11-22T15:00",
+   "demand_mw": 11871,
+   "demand_low_mw": 10957,
+   "demand_high_mw": 12760,
+   "supply_mw": 10258,
+   "loadshed_mw": 807,
+   "temp_c": 28.0
+  },
+  {
+   "timestamp": "2026-11-22T16:00",
+   "demand_mw": 11539,
+   "demand_low_mw": 10625,
+   "demand_high_mw": 12428,
+   "supply_mw": 9886,
+   "loadshed_mw": 827,
+   "temp_c": 27.2
+  },
+  {
+   "timestamp": "2026-11-22T17:00",
+   "demand_mw": 11611,
+   "demand_low_mw": 10696,
+   "demand_high_mw": 12499,
+   "supply_mw": 10513,
+   "loadshed_mw": 549,
+   "temp_c": 26.1
+  },
+  {
    "timestamp": "2026-11-22T18:00",
-   "demand_mw": 12349,
-   "demand_low_mw": 11448,
-   "demand_high_mw": 13227,
+   "demand_mw": 12587,
+   "demand_low_mw": 11672,
+   "demand_high_mw": 13475,
    "supply_mw": 11523,
-   "loadshed_mw": 413,
-   "temp_c": 25.9
+   "loadshed_mw": 532,
+   "temp_c": 24.9
   },
   {
    "timestamp": "2026-11-22T19:00",
-   "demand_mw": 12582,
-   "demand_low_mw": 11681,
-   "demand_high_mw": 13460,
+   "demand_mw": 12391,
+   "demand_low_mw": 11477,
+   "demand_high_mw": 13280,
    "supply_mw": 11015,
-   "loadshed_mw": 783,
-   "temp_c": 25.6
+   "loadshed_mw": 688,
+   "temp_c": 24.1
   },
   {
    "timestamp": "2026-11-22T20:00",
-   "demand_mw": 12284,
-   "demand_low_mw": 11382,
-   "demand_high_mw": 13162,
+   "demand_mw": 12159,
+   "demand_low_mw": 11245,
+   "demand_high_mw": 13047,
    "supply_mw": 10768,
-   "loadshed_mw": 758,
-   "temp_c": 25.1
+   "loadshed_mw": 696,
+   "temp_c": 23.8
   },
   {
    "timestamp": "2026-11-22T21:00",
-   "demand_mw": 11962,
-   "demand_low_mw": 11061,
-   "demand_high_mw": 12840,
+   "demand_mw": 11974,
+   "demand_low_mw": 11060,
+   "demand_high_mw": 12863,
    "supply_mw": 10589,
-   "loadshed_mw": 686,
-   "temp_c": 24.2
+   "loadshed_mw": 692,
+   "temp_c": 23.5
   },
   {
    "timestamp": "2026-11-22T22:00",
-   "demand_mw": 11595,
-   "demand_low_mw": 10694,
-   "demand_high_mw": 12473,
+   "demand_mw": 11802,
+   "demand_low_mw": 10888,
+   "demand_high_mw": 12691,
    "supply_mw": 10184,
-   "loadshed_mw": 706,
-   "temp_c": 23.2
+   "loadshed_mw": 809,
+   "temp_c": 23.1
   },
   {
    "timestamp": "2026-11-22T23:00",
-   "demand_mw": 11419,
-   "demand_low_mw": 10518,
-   "demand_high_mw": 12297,
+   "demand_mw": 11744,
+   "demand_low_mw": 10830,
+   "demand_high_mw": 12633,
    "supply_mw": 9923,
-   "loadshed_mw": 748,
+   "loadshed_mw": 911,
    "temp_c": 22.9
   },
   {
    "timestamp": "2026-11-23T00:00",
-   "demand_mw": 10860,
-   "demand_low_mw": 9959,
-   "demand_high_mw": 11739,
-   "supply_mw": 9556,
-   "loadshed_mw": 652,
+   "demand_mw": 11249,
+   "demand_low_mw": 10334,
+   "demand_high_mw": 12137,
+   "supply_mw": 9659,
+   "loadshed_mw": 795,
    "temp_c": 22.6
+  },
+  {
+   "timestamp": "2026-11-23T01:00",
+   "demand_mw": 10964,
+   "demand_low_mw": 10049,
+   "demand_high_mw": 11852,
+   "supply_mw": 9063,
+   "loadshed_mw": 950,
+   "temp_c": 22.4
+  },
+  {
+   "timestamp": "2026-11-23T02:00",
+   "demand_mw": 10523,
+   "demand_low_mw": 9609,
+   "demand_high_mw": 11412,
+   "supply_mw": 8733,
+   "loadshed_mw": 895,
+   "temp_c": 22.1
+  },
+  {
+   "timestamp": "2026-11-23T03:00",
+   "demand_mw": 10116,
+   "demand_low_mw": 9202,
+   "demand_high_mw": 11005,
+   "supply_mw": 8522,
+   "loadshed_mw": 797,
+   "temp_c": 21.9
+  },
+  {
+   "timestamp": "2026-11-23T04:00",
+   "demand_mw": 9676,
+   "demand_low_mw": 8761,
+   "demand_high_mw": 10564,
+   "supply_mw": 8307,
+   "loadshed_mw": 685,
+   "temp_c": 21.6
+  },
+  {
+   "timestamp": "2026-11-23T05:00",
+   "demand_mw": 9455,
+   "demand_low_mw": 8540,
+   "demand_high_mw": 10343,
+   "supply_mw": 8219,
+   "loadshed_mw": 618,
+   "temp_c": 21.5
+  },
+  {
+   "timestamp": "2026-11-23T06:00",
+   "demand_mw": 8973,
+   "demand_low_mw": 8058,
+   "demand_high_mw": 9861,
+   "supply_mw": 8266,
+   "loadshed_mw": 353,
+   "temp_c": 21.5
+  },
+  {
+   "timestamp": "2026-11-23T07:00",
+   "demand_mw": 9596,
+   "demand_low_mw": 8682,
+   "demand_high_mw": 10485,
+   "supply_mw": 9064,
+   "loadshed_mw": 266,
+   "temp_c": 22.1
+  },
+  {
+   "timestamp": "2026-11-23T08:00",
+   "demand_mw": 9571,
+   "demand_low_mw": 8657,
+   "demand_high_mw": 10460,
+   "supply_mw": 9895,
+   "loadshed_mw": 0,
+   "temp_c": 22.7
+  },
+  {
+   "timestamp": "2026-11-23T09:00",
+   "demand_mw": 9412,
+   "demand_low_mw": 8497,
+   "demand_high_mw": 10300,
+   "supply_mw": 9947,
+   "loadshed_mw": 0,
+   "temp_c": 23.6
   }
  ],
  "next_hours_score": {
@@ -234,17 +234,17 @@
   "band_high_mw": 1032
  },
  "bpdb_score": {
-  "days": 382,
-  "eve_peak_demand_mape_pct": 4.15
+  "days": 385,
+  "eve_peak_demand_mape_pct": 4.16
  },
  "next_days": [
   {
    "date": "2026-11-22",
    "weather": "forecast",
-   "mean_temp_c": 24.4,
-   "demand_peak_mw": 12563,
-   "demand_low_mw": 11330,
-   "demand_high_mw": 13595,
+   "mean_temp_c": 24.3,
+   "demand_peak_mw": 12524,
+   "demand_low_mw": 11291,
+   "demand_high_mw": 13556,
    "supply_peak_mw": 14669,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -258,10 +258,10 @@
   {
    "date": "2026-11-23",
    "weather": "forecast",
-   "mean_temp_c": 24.1,
-   "demand_peak_mw": 12436,
-   "demand_low_mw": 11203,
-   "demand_high_mw": 13468,
+   "mean_temp_c": 23.9,
+   "demand_peak_mw": 12381,
+   "demand_low_mw": 11148,
+   "demand_high_mw": 13413,
    "supply_peak_mw": 14669,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -275,10 +275,10 @@
   {
    "date": "2026-11-24",
    "weather": "forecast",
-   "mean_temp_c": 23.7,
-   "demand_peak_mw": 12336,
-   "demand_low_mw": 11103,
-   "demand_high_mw": 13368,
+   "mean_temp_c": 23.8,
+   "demand_peak_mw": 12342,
+   "demand_low_mw": 11109,
+   "demand_high_mw": 13374,
    "supply_peak_mw": 14669,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -292,10 +292,10 @@
   {
    "date": "2026-11-25",
    "weather": "forecast",
-   "mean_temp_c": 21.6,
-   "demand_peak_mw": 11643,
-   "demand_low_mw": 10410,
-   "demand_high_mw": 12675,
+   "mean_temp_c": 21.4,
+   "demand_peak_mw": 11562,
+   "demand_low_mw": 10329,
+   "demand_high_mw": 12594,
    "supply_peak_mw": 14669,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -309,10 +309,10 @@
   {
    "date": "2026-11-26",
    "weather": "forecast",
-   "mean_temp_c": 21.5,
-   "demand_peak_mw": 11606,
-   "demand_low_mw": 10373,
-   "demand_high_mw": 12638,
+   "mean_temp_c": 21.3,
+   "demand_peak_mw": 11541,
+   "demand_low_mw": 10308,
+   "demand_high_mw": 12573,
    "supply_peak_mw": 14669,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -326,10 +326,10 @@
   {
    "date": "2026-11-27",
    "weather": "forecast",
-   "mean_temp_c": 22.0,
-   "demand_peak_mw": 10675,
-   "demand_low_mw": 9442,
-   "demand_high_mw": 11707,
+   "mean_temp_c": 21.8,
+   "demand_peak_mw": 10601,
+   "demand_low_mw": 9368,
+   "demand_high_mw": 11633,
    "supply_peak_mw": 14669,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -344,9 +344,9 @@
    "date": "2026-11-28",
    "weather": "forecast",
    "mean_temp_c": 21.8,
-   "demand_peak_mw": 11699,
-   "demand_low_mw": 10466,
-   "demand_high_mw": 12731,
+   "demand_peak_mw": 11695,
+   "demand_low_mw": 10462,
+   "demand_high_mw": 12727,
    "supply_peak_mw": 14669,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -479,10 +479,10 @@
   {
    "date": "2026-12-06",
    "weather": "forecast",
-   "mean_temp_c": 20.7,
-   "demand_peak_mw": 11345,
-   "demand_low_mw": 10112,
-   "demand_high_mw": 12377,
+   "mean_temp_c": 20.8,
+   "demand_peak_mw": 11360,
+   "demand_low_mw": 10127,
+   "demand_high_mw": 12392,
    "supply_peak_mw": 14669,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -495,11 +495,11 @@
   },
   {
    "date": "2026-12-07",
-   "weather": "normal",
-   "mean_temp_c": 21.0,
-   "demand_peak_mw": 11421,
-   "demand_low_mw": 10188,
-   "demand_high_mw": 12453,
+   "weather": "forecast",
+   "mean_temp_c": 23.4,
+   "demand_peak_mw": 12233,
+   "demand_low_mw": 11000,
+   "demand_high_mw": 13265,
    "supply_peak_mw": 14669,
    "loadshed_peak_mw": 0,
    "loadshed_low_mw": 0,
@@ -749,5 +749,5 @@
    "outage_hours_high": 0.0
   }
  ],
- "next_24h_outage_hours": 0.8
+ "next_24h_outage_hours": 1.2
 }
